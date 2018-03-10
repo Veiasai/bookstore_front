@@ -1,11 +1,3 @@
-#components-layout-demo-top-side-2 .header {
-  width: 120px;
-  height: 31px;
-  background: rgba(255,255,255,.2);
-  margin: 16px 28px 16px 0;
-  float: left;
-}
-
 .ant-carousel .slick-slide {
   text-align: center;
   height: 160px;
@@ -19,11 +11,19 @@
 }
 
 .storename {
-  text-align: center;
-  font-family:ZoomlaXingtiJ2;
-  font-weight:500;
-  font-size:4em;
-  background: #fff;
+     text-align: center;
+     font-family:ZoomlaXingtiJ2;
+     font-weight:500;
+     height:120px;
+     line-height:120px;
+     font-size:4em;
+     background: #fff;
+     overflow:hidden;
+ }
+
+.Topbar {
+    font-size:large;
+    overflow:hidden;
 }
 
 @font-face{

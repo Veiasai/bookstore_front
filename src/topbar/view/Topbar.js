@@ -1,27 +1,24 @@
-import { Affix , Layout, Menu } from 'antd';
+import { Affix , Row , Col, Button, Divider} from 'antd';
 import React,{Component} from 'react';
-const {Header} = Layout;
-
-
+import { Link } from "react-router-dom";
 
 class Topbar extends Component {
     render() {
         return (
-            <Affix>
-                <Header className="header">
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        defaultSelectedKeys={['2']}
-                        style={{ lineHeight: '64px' }}
-                    >
-                        <Menu.Item key="1">nav 1</Menu.Item>
-                        <Menu.Item key="2">nav 2</Menu.Item>
-                        <Menu.Item key="3">nav 3</Menu.Item>
-                    </Menu>
-                </Header>
+            <Affix >
+                <Row className="Topbar" type="flex"  align="middle" style={{background:'#000044'}}>
+                    <Col span={4} push={4}>
+                        <Link to="/signin">登陆</Link>
+                        <Divider type="vertical" />
+                        <Link to="/signup">注册</Link>
+                    </Col>
+                    <Col span={6} push={10}>
+                        <Link to="/myzone">个人信息</Link>
+                        <Divider type="vertical" />
+                        <Link to="/shoppingcart">我的购物车</Link>
+                    </Col>
+                </Row>
             </Affix>
-
         )
     }
 }
