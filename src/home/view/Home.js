@@ -3,8 +3,12 @@ import { BackTop, Row, Col, Layout, Menu} from 'antd';
 import Main from './Main'
 import Display from './BookDisplay'
 
-const {Footer, Header} = Layout;
+const {Footer} = Layout;
 class Home extends Component{
+
+    componentWillMount() {
+
+    }
     render() {
         return (
             <div>

@@ -1,8 +1,8 @@
-import { Layout, Menu, Breadcrumb, Icon, Switch } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import React,{Component} from 'react';
 
-const { SubMenu, ItemGroup, Item} = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
+
 const catalogue = {
     '青春':[
         '校园',
@@ -53,13 +53,13 @@ class Main extends Component{
                             {
                                 (this.getcata(catalogue)).map((Item, i)=> {
                                     return (
-                                        <SubMenu key={i} title={<span><Icon type="star" />{Item}</span>}>
+                                        <Menu.SubMenu key={i} title={<span><Icon type="star" />{Item}</span>}>
                                             {catalogue[Item].map((Item, j)=> {
                                                 return (
                                                     <Menu.Item key={i*20+j}>{Item}</Menu.Item>
                                                 )
                                             })}
-                                        </SubMenu>
+                                        </Menu.SubMenu>
                                     )
                                 })
                             }

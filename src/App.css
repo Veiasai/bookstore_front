@@ -34,3 +34,8 @@
   url('https://code.z01.com/font/ZoomlaXingtiJ2.ttf') format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
   url('https://code.z01.com/font/ZoomlaXingtiJ2.svg#ZoomlaXingtiJ2') format("svg"); /* iOS 4.1- */
   font-style: normal; font-weight: normal;}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
