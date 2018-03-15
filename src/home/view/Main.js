@@ -1,5 +1,6 @@
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import React,{Component} from 'react';
+import {view as Bookgrid} from '../../book'
 
 const { Content, Footer, Sider } = Layout;
 
@@ -46,17 +47,14 @@ class Main extends Component{
 
                 <Layout style={{ padding: '24px 0', background: '#fff' }}>
                     <Sider width={200} style={{ background: '#fff' }}>
-                        <Menu
-                            mode='inline'
-                            style={{ height: '100%' }}
-                        >
+                        <Menu mode='inline' style={{ height: '100%' }}>
                             {
                                 (this.getcata(catalogue)).map((Item, i)=> {
                                     return (
                                         <Menu.SubMenu key={i} title={<span><Icon type="star" />{Item}</span>}>
                                             {catalogue[Item].map((Item, j)=> {
                                                 return (
-                                                    <Menu.Item key={i*20+j}>{Item}</Menu.Item>
+                                                    <Menu.Item key={j}>{Item}</Menu.Item>
                                                 )
                                             })}
                                         </Menu.SubMenu>
@@ -66,7 +64,7 @@ class Main extends Component{
                         </Menu>
                     </Sider>
                     <Content style={{ padding: '0 24px', minHeight: 280 }}>
-                        Content
+                        <Bookgrid />
                     </Content>
                 </Layout>
             </Content>
