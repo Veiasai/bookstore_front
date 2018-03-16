@@ -1,13 +1,18 @@
-import { Card, Icon } from 'antd';
+import { Card, Icon, Button } from 'antd';
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom'
 
 class Singlebook extends Component {
+
+    addclick = (e) => {
+    }
+
     render() {
         const {width, imgsrc, bookname, description, height } = this.props;
         return (
             <Card
                 cover={<img style={{ width: width, height: height}} alt="example" src={imgsrc} />}
-                actions={[<Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" />]}
+                actions={[<Link to={'/book/'+ bookname}>详情</Link>, <Icon onClick={this.addclick} type="plus-circle-o" />]}
             >
                 <Card.Meta
                     title={bookname}

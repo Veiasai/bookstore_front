@@ -3,12 +3,14 @@ import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Butto
 const FormItem = Form.Item;
 const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
-
+const mobile = /^1\d{10}$/;
+const password = /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,20}$/;
 class RegistrationForm extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
     };
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
@@ -35,22 +37,23 @@ class RegistrationForm extends React.Component {
 
     validateToNextPassword = (rule, value, callback) => {
         const form = this.props.form;
+        if (value && !password.test(value)) {
+            callback('password should include number and alpha');
+        }
         if (value && this.state.confirmDirty) {
             form.validateFields(['confirm'], { force: true });
         }
         callback();
     }
 
-    handleWebsiteChange = (value) => {
-        let autoCompleteResult;
-        if (!value) {
-            autoCompleteResult = [];
+    compareMobileNumber = (rule, value, callback) => {
+        const form = this.props.form;
+        if (value && mobile.test(value)) {
+            callback();
         } else {
-            autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
+            callback('the input should be 11 digits');
         }
-        this.setState({ autoCompleteResult });
     }
-
     render() {
         const { getFieldDecorator } = this.props.form;
         const { autoCompleteResult } = this.state;
@@ -77,18 +80,6 @@ class RegistrationForm extends React.Component {
                 },
             },
         };
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '86',
-        })(
-            <Select style={{ width: 70 }}>
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>
-        );
-
-        const websiteOptions = autoCompleteResult.map(website => (
-            <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-        ));
 
         return (
             <Form onSubmit={this.handleSubmit}>
@@ -120,10 +111,8 @@ class RegistrationForm extends React.Component {
                         <Input type="password" />
                     )}
                 </FormItem>
-                <FormItem
-                    {...formItemLayout}
-                    label="Confirm Password"
-                >
+
+                <FormItem{...formItemLayout} label="Confirm Password">
                     {getFieldDecorator('confirm', {
                         rules: [{
                             required: true, message: 'Please confirm your password!',
@@ -134,19 +123,26 @@ class RegistrationForm extends React.Component {
                         <Input type="password" onBlur={this.handleConfirmBlur} />
                     )}
                 </FormItem>
-                <FormItem
-                    {...formItemLayout}
-                    label={(
-                        <span>
-              Nickname&nbsp;
+
+                <FormItem{...formItemLayout} label={(
+                        <span>Nickname&nbsp;
                             <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-                    )}
-                >
+                                <Icon type="question-circle-o" /></Tooltip></span>)}>
                     {getFieldDecorator('nickname', {
                         rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                    })(
+                        <Input />
+                    )}
+                </FormItem>
+
+                <FormItem {...formItemLayout} label="Mobile Phone">
+                    {getFieldDecorator('Mobile Phone', {
+                        rules: [{
+                            required: true, message: 'Please input your Mobile Phone Number',
+                        },{
+                            validator: this.compareMobileNumber,
+                        },
+                        ],
                     })(
                         <Input />
                     )}
