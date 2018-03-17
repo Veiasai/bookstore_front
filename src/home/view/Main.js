@@ -54,7 +54,7 @@ class Main extends Component{
                                         <Menu.SubMenu key={i} title={<span><Icon type="star" />{Item}</span>}>
                                             {catalogue[Item].map((Item, j)=> {
                                                 return (
-                                                    <Menu.Item key={j}>{Item}</Menu.Item>
+                                                    <Menu.Item key={i*20+j}>{Item}</Menu.Item>
                                                 )
                                             })}
                                         </Menu.SubMenu>
