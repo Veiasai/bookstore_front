@@ -1,10 +1,6 @@
 import React from 'react'
-import { Form, Select, Row, Col, AutoComplete, Divider } from 'antd';
+import {  Row, Col, Divider } from 'antd';
 import Registerform from './Registerform'
-
-const FormItem = Form.Item;
-const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
 
 class Register extends React.Component {
     render() {

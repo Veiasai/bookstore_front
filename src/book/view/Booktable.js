@@ -10,10 +10,11 @@ class Booktable extends Component {
     constructor(props, context)
     {
         super(props, context);
+        const bookStore = this.props.rootStore.bookStore;
         this.state = {
             filterDropdownVisible: false,
             searchText: '',
-            data:this.props.rootStore.bookStore.data,
+            data:bookStore.data,
             filtered: false,
             pagination: {total:50},
             loading: false,
@@ -26,11 +27,12 @@ class Booktable extends Component {
 
     onSearch = () => {
         const { searchText } = this.state;
+        const {data} = this.props.rootStore.bookStore;
         const reg = new RegExp(searchText, 'gi');
         this.setState({
             filterDropdownVisible: false,
             filtered: !!searchText,
-            data: this.props.store.data.map((record) => {
+            data: data.map((record) => {
                 const match = record.bookname.match(reg);
                 if (!match) {
                     return null;

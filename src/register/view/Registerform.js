@@ -1,10 +1,9 @@
 import React from 'react'
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
-const FormItem = Form.Item;
-const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
+import { Form, Input, Tooltip, Icon,  Checkbox, Button,  } from 'antd';
+
 const mobile = /^1\d{10}$/;
 const password = /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,20}$/;
+
 class RegistrationForm extends React.Component {
     state = {
         confirmDirty: false,
@@ -19,12 +18,12 @@ class RegistrationForm extends React.Component {
             }
 
         });
-    }
+    };
 
     handleConfirmBlur = (e) => {
         const value = e.target.value;
         this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-    }
+    };
 
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
@@ -47,7 +46,6 @@ class RegistrationForm extends React.Component {
     }
 
     compareMobileNumber = (rule, value, callback) => {
-        const form = this.props.form;
         if (value && mobile.test(value)) {
             callback();
         } else {
@@ -55,8 +53,8 @@ class RegistrationForm extends React.Component {
         }
     }
     render() {
+        const FormItem = Form.Item;
         const { getFieldDecorator } = this.props.form;
-        const { autoCompleteResult } = this.state;
 
         const formItemLayout = {
             labelCol: {
