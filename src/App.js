@@ -7,6 +7,9 @@ import {view as Topbar} from './topbar'
 import {view as Login} from './login'
 import {view as Register} from './register'
 
+
+
+
 class App extends Component {
     render() {
         return (

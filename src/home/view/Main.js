@@ -1,35 +1,17 @@
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 import React, {Component} from 'react';
 import {view as Bookgrid} from '../../book'
-
+import {observer, inject} from 'mobx-react'
 const {Content, Footer, Sider} = Layout;
 
-const catalogue = {
-    '青春': [
-        '校园',
-        '爱情',
-        '叛逆',
-        '悬疑',
-        '惊悚',
-        '网络',
-        '爆笑',
-    ],
-    '小说': [
-        '世界名著',
-        '外国小说',
-        '中国古典小说',
-        '中国现代小说',
-        '中国当代小说',
-        '历史小说',
-        '都市小说',
-        '悬疑推理',
-        '恐怖惊悚',
-        '武侠小说',
-        '言情',
-    ],
-}
-
+@inject(['rootStore'])
+@observer
 class Main extends Component {
+    constructor(props)
+    {
+        super(props);
+    }
+
     getcata(cata) {
         let result = [];
         for (let prop in cata) {
@@ -39,6 +21,7 @@ class Main extends Component {
     }
 
     render() {
+        const cata = this.props.rootStore.classStore.catalogue;
         return (
             <Layout>
                 <Content style={{padding: '0 50px'}}>
@@ -51,10 +34,10 @@ class Main extends Component {
                         <Sider width={200} style={{background: '#fff'}}>
                             <Menu mode='inline' style={{height: '100%'}}>
                                 {
-                                    (this.getcata(catalogue)).map((Item, i) => {
+                                    (this.getcata(cata)).map((Item, i) => {
                                         return (
                                             <Menu.SubMenu key={i} title={<span><Icon type="star"/>{Item}</span>}>
-                                                {catalogue[Item].map((Item, j) => {
+                                                {cata[Item].map((Item, j) => {
                                                     return (
                                                         <Menu.Item key={i * 20 + j}>{Item}</Menu.Item>
                                                     )
@@ -66,7 +49,7 @@ class Main extends Component {
                             </Menu>
                         </Sider>
                         <Content style={{padding: '0 24px', minHeight: 280}}>
-                            <Bookgrid/>
+                            <Bookgrid />
                         </Content>
                     </Layout>
                 </Content>

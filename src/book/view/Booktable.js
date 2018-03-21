@@ -1,65 +1,25 @@
 import React,{Component} from 'react';
 import { Table, Input, Button, Icon } from 'antd';
 
-const data = [{
-    key: '1',
-    bookname: 'black',
-    writer:'tangji',
-    class:'青春',
-    date:'2016',
-    price: 25,
-    description: 'New York No. 1 Lake Park',
-}, {
-    key: '2',
-    bookname: 'wtf',
-    writer:'tangji',
-    class:'校园',
-    date:'2018',
-    price: 19,
-    description: 'New York No. 1 Lake Park',
-}, {
-    key: '3',
-    bookname: 'overflow',
-    writer:'tangji',
-    class:'青春',
-    date:'2017',
-    price: 32,
-    description: 'New York No. 1 Lake Park',
-}, {
-    key: '4',
-    bookname: 'Segmentationfault',
-    writer:'huli',
-    class:'青春',
-    date:'2018',
-    price: 20,
-    description: 'New York No. 1 Lake Park',
-}, {
-    key: '5',
-    bookname: 'Segmentationfault',
-    writer:'huli',
-    class:'青春',
-    date:'2018',
-    price: 20,
-    description: 'New York No. 1 Lake Park',
-}, {
-    key: '6',
-    bookname: 'Segmentationfault',
-    writer:'huli',
-    class:'青春',
-    date:'2018',
-    price: 20,
-    description: 'New York No. 1 Lake Park',
-}];
+import {observer} from 'mobx-react';
+import {inject} from "mobx-react/index";
 
+@inject(['rootStore'])
+@observer
 class Booktable extends Component {
-    state = {
-        filterDropdownVisible: false,
-        data,
-        searchText: '',
-        filtered: false,
-        pagination: {total:50},
-        loading: false,
-    };
+    constructor(props, context)
+    {
+        super(props, context);
+        this.state = {
+            filterDropdownVisible: false,
+            searchText: '',
+            data:this.props.rootStore.bookStore.data,
+            filtered: false,
+            pagination: {total:50},
+            loading: false,
+        };
+    }
+
     onInputChange = (e) => {
         this.setState({ searchText: e.target.value });
     }
@@ -70,7 +30,7 @@ class Booktable extends Component {
         this.setState({
             filterDropdownVisible: false,
             filtered: !!searchText,
-            data: data.map((record) => {
+            data: this.props.store.data.map((record) => {
                 const match = record.bookname.match(reg);
                 if (!match) {
                     return null;

@@ -9,6 +9,10 @@ const test = [
 ]
 
 class BookDisplay extends Component {
+    constructor(props)
+    {
+        super(props);
+    }
     render() {
         return (
             <Carousel autoplay effect="fade">

@@ -1,5 +1,4 @@
-import * as actions from './actions.js';
-import reducer from './reducer';
+import store from './Bookstore'
 import view from './view/Booktable'
 
-export {actions, reducer, view};
+export {store, view};
