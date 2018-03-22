@@ -1,6 +1,6 @@
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 import React, {Component} from 'react';
-import {view as Bookgrid} from '../../book'
+import {view as Bookgrid} from '../../booktable'
 import {observer, inject} from 'mobx-react'
 const {Content, Footer, Sider} = Layout;
 

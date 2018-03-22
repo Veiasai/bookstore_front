@@ -1,4 +1,4 @@
-import {store as Bookstore} from './book'
+import {store as Bookstore} from './booktable'
 import {store as Classstore} from './home'
 import {store as Userstore} from './login'
 class RootStore {

@@ -6,6 +6,7 @@ import {view as Home} from './home'
 import {view as Topbar} from './topbar'
 import {view as Login} from './login'
 import {view as Register} from './register'
+import {view as Bookpage} from './bookpage'
 
 
 
@@ -20,6 +21,7 @@ class App extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
+                        <Route path="/book/:id/:name" component={Bookpage} />
                     </Row>
                 </div>
             </Router>

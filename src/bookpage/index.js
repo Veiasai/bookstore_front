@@ -1,3 +1,3 @@
-import view from './view/Login.js'
+import view from './view/Bookone.js'
 
 export { view};

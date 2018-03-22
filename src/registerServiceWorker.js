@@ -69,8 +69,8 @@ function registerValidSW(swUrl) {
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
-              // "book is cached for offline use." message.
-              console.log('book is cached for offline use.');
+              // "booktable is cached for offline use." message.
+              console.log('booktable is cached for offline use.');
             }
           }
         };
