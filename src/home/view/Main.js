@@ -48,6 +48,7 @@ class Main extends Component {
                                 }
                             </Menu>
                         </Sider>
+
                         <Content style={{padding: '0 24px', minHeight: 280}}>
                             <Bookgrid />
                         </Content>

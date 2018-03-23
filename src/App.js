@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route} from 'react-keeper'
 import {Row} from 'antd';
 import './App.css';
 import {view as Home} from './home'
@@ -8,9 +8,6 @@ import {view as Login} from './login'
 import {view as Register} from './register'
 import {view as Bookpage} from './bookpage'
 
-
-
-
 class App extends Component {
     render() {
         return (
@@ -18,10 +15,10 @@ class App extends Component {
                 <div>
                     <Topbar/>
                     <Row className="App">
-                        <Route exact path="/" component={Home} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/register" component={Register} />
+                        <Route cache path="/login" component={Login} />
+                        <Route cache path="/register" component={Register} />
                         <Route path="/book/:id/:name" component={Bookpage} />
+                        <Route path="/home" component={Home} />
                     </Row>
                 </div>
             </Router>

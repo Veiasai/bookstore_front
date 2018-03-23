@@ -1,17 +1,12 @@
-import React,{Component} from 'react';
-import { BackTop, Row, Col, Layout, Menu} from 'antd';
+import React, {Component} from 'react';
+import {BackTop, Row, Col, Layout, Menu} from 'antd';
+import {Route, Link} from 'react-keeper'
 import Main from './Main'
 import Display from './BookDisplay'
 
 const {Footer} = Layout;
-class Home extends Component{
-    constructor(props)
-    {
-        super(props);
-    }
-    componentWillMount() {
 
-    }
+class Home extends Component {
     render() {
         return (
             <div>
@@ -22,27 +17,29 @@ class Home extends Component{
                         </div>
                     </Col>
                 </Row>
-                <Row type="flex" justify="space-around" align="middle" style={{background:'#000000'}}>
+                <Row type="flex" justify="space-around" align="middle" style={{background: '#000000'}}>
                     <Col span={12}>
                         <Menu
                             theme="dark"
                             mode="horizontal"
                             defaultSelectedKeys={['1']}
-                            style={{ lineHeight: '64px'}}
+                            style={{lineHeight: '64px'}}
                         >
-                            <Menu.Item key="1">首页</Menu.Item>
-                            <Menu.Item key="2">店长推荐</Menu.Item>
-                            <Menu.Item key="3">新书上架</Menu.Item>
-                            <Menu.Item key="4">上传书籍</Menu.Item>
+                            <Menu.Item key="1"><Link to='/home'>首页</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to='/home/like'>店长推荐</Link></Menu.Item>
+                            <Menu.Item key="3"><Link to='/home/new'>新书上架</Link></Menu.Item>
+                            <Menu.Item key="4"><Link to='/upload'>上传书籍</Link></Menu.Item>
                             <Menu.Item key="5">加盟我们</Menu.Item>
                         </Menu>
                     </Col>
                 </Row>
+
                 <Row type="flex" justify="space-around" align="middle">
                     <Col span={16}>
-                        <Display/>
+                        <Route path='/>' component={Display}/>
                     </Col>
                 </Row>
+
                 <Row type="flex" justify="space-around" align="middle">
                     <Col span={16}>
                         <Main/>
@@ -50,14 +47,14 @@ class Home extends Component{
                 </Row>
                 <Row type="flex" justify="space-around" align="middle">
                     <Col span={24}>
-                        <Footer style={{ textAlign: 'center', background:'#fff' }}>
+                        <Footer style={{textAlign: 'center', background: '#ffffff'}}>
                             Tornado Bookstore ©2018 Created by Veiasai
                         </Footer>
                     </Col>
                 </Row>
-                <BackTop />
+                <BackTop/>
             </div>
-            )
+        )
     };
 }
 

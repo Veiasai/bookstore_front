@@ -1,6 +1,6 @@
 import { Affix , Row , Col, Divider} from 'antd';
 import React,{Component} from 'react';
-import { Link } from "react-router-dom";
+import { Link } from "react-keeper";
 
 class Topbar extends Component {
     render() {
@@ -9,7 +9,7 @@ class Topbar extends Component {
                 <Row className="Topbar" type="flex"  align="middle" style={{background:'#000044'}}>
                     <Col span={6} push={4}>
                         <text style={{color:'#fff'}}>(｡･∀･)ﾉﾞ嗨，欢迎光临！</text>
-                        <Link to="/">龙卷风书店</Link>
+                        <Link to="/home">龙卷风书店</Link>
                         <Divider type="vertical" />
                         <Link to="/login">登陆</Link>
                         <Divider type="vertical" />
