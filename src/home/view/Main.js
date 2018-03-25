@@ -2,13 +2,13 @@ import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 import React, {Component} from 'react';
 import {view as Bookgrid} from '../../booktable'
 import {observer, inject} from 'mobx-react'
+
 const {Content, Footer, Sider} = Layout;
 
 @inject(['rootStore'])
 @observer
 class Main extends Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
     }
 
@@ -50,7 +50,7 @@ class Main extends Component {
                         </Sider>
 
                         <Content style={{padding: '0 24px', minHeight: 280}}>
-                            <Bookgrid />
+                            <Bookgrid/>
                         </Content>
                     </Layout>
                 </Content>

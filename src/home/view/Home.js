@@ -28,7 +28,7 @@ class Home extends Component {
                             <Menu.Item key="1"><Link to='/home'>首页</Link></Menu.Item>
                             <Menu.Item key="2"><Link to='/home/like'>店长推荐</Link></Menu.Item>
                             <Menu.Item key="3"><Link to='/home/new'>新书上架</Link></Menu.Item>
-                            <Menu.Item key="4"><Link to='/upload'>上传书籍</Link></Menu.Item>
+                            <Menu.Item key="4"><Link to='/home/upload'>上传书籍</Link></Menu.Item>
                             <Menu.Item key="5">加盟我们</Menu.Item>
                         </Menu>
                     </Col>
@@ -36,23 +36,9 @@ class Home extends Component {
 
                 <Row type="flex" justify="space-around" align="middle">
                     <Col span={16}>
-                        <Route path='/>' component={Display}/>
+                        <Route index component={Display}/>
                     </Col>
                 </Row>
-
-                <Row type="flex" justify="space-around" align="middle">
-                    <Col span={16}>
-                        <Main/>
-                    </Col>
-                </Row>
-                <Row type="flex" justify="space-around" align="middle">
-                    <Col span={24}>
-                        <Footer style={{textAlign: 'center', background: '#ffffff'}}>
-                            Tornado Bookstore ©2018 Created by Veiasai
-                        </Footer>
-                    </Col>
-                </Row>
-                <BackTop/>
             </div>
         )
     };
