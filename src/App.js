@@ -18,7 +18,7 @@ class App extends Component {
                         <Route cache path="/login" component={Login} />
                         <Route cache path="/register" component={Register} />
                         <Route path="/book/:id/:name" component={Bookpage} />
-                        <Route path="/home" component={Home} />
+                        <Route cache path="/home" component={Home} />
                     </Row>
                 </div>
             </Router>

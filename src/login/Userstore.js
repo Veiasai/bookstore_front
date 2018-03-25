@@ -10,6 +10,7 @@ class Userstore {
         Email:[],
         password:[],
         remember:false,
+        hasLogin:false,
     };
 
     @action.bound
@@ -17,26 +18,6 @@ class Userstore {
         this.user = {...value};
     }
 
-
-    @action.bound
-    async submit(values) {
-        const smtvalues = values;
-        if (this.user.remember === true)
-        {
-            smtvalues.Email = this.user.Email;
-            smtvalues.passive = this.user.password;
-        }
-        let response = await this.post(smtvalues);
-
-    }
-
-    post(values) {
-        let url = `https://api.douban.com/v2/movie/search?q=`;
-
-        return new Promise(function (resolve, reject) {
-
-        });
-    }
 }
 
 export default Userstore;

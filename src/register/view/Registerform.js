@@ -1,28 +1,49 @@
 import React from 'react'
-import { Form, Input, Tooltip, Icon,  Checkbox, Button,  } from 'antd';
+import {Form, Input, Tooltip, Icon, Checkbox, Button,} from 'antd';
+import {inject} from 'mobx-react'
+import {prefix, ip, registerAction} from "../../constVariable";
+import register from "../../registerServiceWorker";
 
 const mobile = /^1\d{10}$/;
-const password = /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,20}$/;
+const password = /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,18}$/;
 
+@inject(['rootStore'])
 class RegistrationForm extends React.Component {
-    state = {
-        confirmDirty: false,
-        autoCompleteResult: [],
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            confirmDirty: false,
+        };
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                this.register(values);
             }
 
         });
     };
 
+    register = async (values) => {
+        const url = prefix + ip + registerAction;
+        const request = {
+            username: values.nickname,
+            email: values.email,
+            password: values.password,
+        };
+
+        const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(request),
+        });
+    };
+
     handleConfirmBlur = (e) => {
         const value = e.target.value;
-        this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+        this.setState({confirmDirty: this.state.confirmDirty || !!value});
     };
 
     compareToFirstPassword = (rule, value, callback) => {
@@ -37,10 +58,10 @@ class RegistrationForm extends React.Component {
     validateToNextPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (value && !password.test(value)) {
-            callback('password should include number and alpha');
+            callback('password should include number and alpha(size:6-18)');
         }
         if (value && this.state.confirmDirty) {
-            form.validateFields(['confirm'], { force: true });
+            form.validateFields(['confirm'], {force: true});
         }
         callback();
     }
@@ -52,18 +73,27 @@ class RegistrationForm extends React.Component {
             callback('the input should be 11 digits');
         }
     }
+
+    checkAgreement = (rule, value, callback) => {
+        if (value === true) {
+            callback();
+        } else {
+            callback('Here can\'t be false');
+        }
+    }
+
     render() {
         const FormItem = Form.Item;
-        const { getFieldDecorator } = this.props.form;
+        const {getFieldDecorator} = this.props.form;
 
         const formItemLayout = {
             labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
+                xs: {span: 24},
+                sm: {span: 8},
             },
             wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 16 },
+                xs: {span: 24},
+                sm: {span: 16},
             },
         };
         const tailFormItemLayout = {
@@ -92,7 +122,7 @@ class RegistrationForm extends React.Component {
                             required: true, message: 'Please input your E-mail!',
                         }],
                     })(
-                        <Input />
+                        <Input/>
                     )}
                 </FormItem>
                 <FormItem
@@ -106,7 +136,7 @@ class RegistrationForm extends React.Component {
                             validator: this.validateToNextPassword,
                         }],
                     })(
-                        <Input type="password" />
+                        <Input type="password"/>
                     )}
                 </FormItem>
 
@@ -118,18 +148,18 @@ class RegistrationForm extends React.Component {
                             validator: this.compareToFirstPassword,
                         }],
                     })(
-                        <Input type="password" onBlur={this.handleConfirmBlur} />
+                        <Input type="password" onBlur={this.handleConfirmBlur}/>
                     )}
                 </FormItem>
 
                 <FormItem{...formItemLayout} label={(
-                        <span>Nickname&nbsp;
-                            <Tooltip title="What do you want others to call you?">
-                                <Icon type="question-circle-o" /></Tooltip></span>)}>
+                    <span>Nickname&nbsp;
+                        <Tooltip title="What do you want others to call you?">
+                                <Icon type="question-circle-o"/></Tooltip></span>)}>
                     {getFieldDecorator('nickname', {
-                        rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                        rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
                     })(
-                        <Input />
+                        <Input/>
                     )}
                 </FormItem>
 
@@ -137,18 +167,22 @@ class RegistrationForm extends React.Component {
                     {getFieldDecorator('Mobile Phone', {
                         rules: [{
                             required: true, message: 'Please input your Mobile Phone Number',
-                        },{
+                        }, {
                             validator: this.compareMobileNumber,
                         },
                         ],
                     })(
-                        <Input />
+                        <Input/>
                     )}
                 </FormItem>
 
                 <FormItem {...tailFormItemLayout}>
                     {getFieldDecorator('agreement', {
                         valuePropName: 'checked',
+                        rules: [{
+                            validator: this.checkAgreement,
+                        },
+                        ],
                     })(
                         <Checkbox>I have read the <a href="">agreement</a></Checkbox>
                     )}
