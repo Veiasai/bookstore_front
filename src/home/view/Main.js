@@ -14,8 +14,8 @@ class Main extends Component {
 
     getcata(cata) {
         let result = [];
-        for (let prop in cata) {
-            result.push(prop);
+        for (let item in cata) {
+            result.push(item);
         }
         return result;
     }

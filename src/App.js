@@ -9,7 +9,7 @@ import {view as Register} from './register'
 import {view as Bookpage} from './bookpage'
 import {view as Welcome} from './welcome'
 import Main from "./home/view/Main";
-
+import Display from './BookDisplay'
 const {Content, Footer, Sider} = Layout;
 
 class App extends Component {
@@ -18,18 +18,23 @@ class App extends Component {
             <Router>
                 <div>
                     <Topbar/>
+                    <Home/>
                     <Row className="App">
                         <Route index path="/" component={Welcome} />
                         <Route cache path="/login" component={Login} />
                         <Route cache path="/register" component={Register} />
                         <Route path="/book/:id/:name" component={Bookpage} />
-                        <Route path="/home" component={Home} />
+
+                    </Row>
+                    <Row type="flex" justify="space-around" align="middle">
+                        <Col span={16}>
+                            <Route path="/>" component={Display} />
+                        </Col>
                     </Row>
 
                     <Row type="flex" justify="space-around" align="middle">
                         <Col span={16}>
-                            <Route cache path='/home>' component={Main}/>
-                            <Route cache path='/home/:class' component={Main}/>
+                            <Route cache path='/>' component={Main}/>
                         </Col>
                     </Row>
 

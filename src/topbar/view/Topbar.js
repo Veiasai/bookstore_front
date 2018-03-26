@@ -9,7 +9,7 @@ class Topbar extends Component {
                 <Row className="Topbar" type="flex"  align="middle" style={{background:'#000044'}}>
                     <Col span={6} push={4}>
                         <text style={{color:'#fff'}}>(｡･∀･)ﾉﾞ嗨，欢迎光临！</text>
-                        <Link to="/home">龙卷风书店</Link>
+                        <Link to="/">龙卷风书店</Link>
                         <Divider type="vertical" />
                         <Link to="/login">登陆</Link>
                         <Divider type="vertical" />

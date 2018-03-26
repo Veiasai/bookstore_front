@@ -4,6 +4,7 @@ class Classstore {
     constructor(rootStore) {
         this.rootStore = rootStore
     }
+
     @observable
     catalogue = {
         '青春': [
