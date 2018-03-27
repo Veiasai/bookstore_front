@@ -6,7 +6,7 @@ const test = [
     'https://raw.githubusercontent.com/Veiasai/pictures/master/mxd.jpg',
     'https://raw.githubusercontent.com/Veiasai/pictures/master/%E5%80%92%E5%BD%B1.jpg',
     'https://raw.githubusercontent.com/Veiasai/pictures/master/%E4%BA%91%E9%92%9F.jpg',
-]
+];
 
 class BookDisplay extends Component {
     constructor(props)

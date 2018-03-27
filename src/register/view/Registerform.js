@@ -38,7 +38,7 @@ class RegistrationForm extends React.Component {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
                     mode: 'cors',
-                    body: "username=" + values.nickname + "&password=" + values.password + "&email=" + values.email,
+                    body: "email=" + values.nickname + "&password=" + values.password + "&email=" + values.email,
                 });
             const json = await response.json();
             console.log(json);

@@ -1,35 +1,89 @@
 import React, {Component} from 'react';
-import {Card, Row, Col, Input, Button, Icon,} from 'antd';
-
+import {Card, Row, Col, Input, Button, Icon, Spin, Slider} from 'antd';
+import {message} from "antd/lib/index";
+import {getBookAction, ip, prefix} from "../../constVariable";
 
 class Bookone extends Component {
-    constructor(props, ) {
+    constructor(props,) {
         super(props);
         this.state = {
-
+            bookID: this.props.params.id,
+            bookName: this.props.params.name,
+            bookPrice: "loading",
+            bookImg: "https://raw.githubusercontent.com/Veiasai/pictures/master/%E6%9A%97%E9%BB%91%E9%A6%86.jpg",
+            bookDescription: "loading",
+            bookWriter: "loading",
+            bookDate: "loading",
+            bookStock: 0,
+            bookCount: 0,
         };
     }
+
+    componentWillMount() {
+        this.getData(this.state.bookID);
+    }
+
+    getData = async (bookID) => {
+        const url = prefix + ip + getBookAction;
+        this.setState({loading: true});
+        try {
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+                    mode: 'cors',
+                    body: "bookid=" + bookID,
+                });
+            const json = await response.json();
+            console.log(json);
+            this.setState(json);
+        }
+        catch (err) {
+            console.log(err);
+            message.info('网络异常');
+        }
+        this.setState({loading: false});
+    };
+
+    onChange = (value) => {
+        this.setState({
+            bookCount: value,
+        });
+    };
+
     render() {
         return (
-            <Row type="flex" justify="center" align="top">
-                <Col>
-                    <Card
-                        hoverable
-                        style={{width: 400}}
-                        cover={<img alt="example" src="https://raw.githubusercontent.com/Veiasai/pictures/master/%E6%9A%97%E9%BB%91%E9%A6%86.jpg"/>}
-                    >
-                        <Card.Meta
-                            title={this.props.params.id + this.props.params.name}
-                            description="www.instagram.com"
-                        />
-                    </Card>
-                </Col>
-                <Col>
-                    <Card title="Card title" bordered={false} style={{width: 400, height:400}}>Card content</Card>
-                    <Button>加入购物车</Button>
-                </Col>
-            </Row>
-
+            <Spin spinning={this.state.loading}>
+                <Row type="flex" justify="center" align="top">
+                    <Col>
+                        <Row>
+                        <Card
+                            hoverable
+                            style={{width: 400}}
+                            cover={<img alt="error"
+                                        src={this.state.bookImg}/>}
+                        >
+                            <Card.Meta
+                                title={this.state.bookName}
+                                description={this.state.bookDate}
+                            />
+                        </Card>
+                        </Row>
+                        <Row>
+                            <text>最大库存：{this.state.bookStock} 购买数量：{this.state.bookCount} 金额：{this.state.bookCount * this.state.bookPrice}</text>
+                            <Slider min={1} max={this.state.bookStock} onChange={this.onChange} value={this.state.bookCount} />
+                        </Row>
+                        <Row>
+                            <Button style={{width: 400}}>加入购物车</Button>
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Card title="Card title" bordered={false} style={{width: 400, height: 400}}>Card content</Card>
+                    </Col>
+                </Row>
+            </Spin>
         )
     }
 }

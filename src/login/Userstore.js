@@ -7,10 +7,12 @@ class Userstore {
 
     @observable
     user = {
+        nickname:[],
         Email:[],
         password:[],
         remember:false,
         hasLogin:false,
+        level:0,
     };
 
     @action.bound
