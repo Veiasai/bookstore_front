@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-keeper'
-import {Row,Col, Layout, BackTop} from 'antd';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-keeper'
+import {Row, Col, Layout, BackTop} from 'antd';
 import './App.css';
 import {view as Home} from './home'
 import {view as Topbar} from './topbar'
@@ -8,9 +8,12 @@ import {view as Login} from './login'
 import {view as Register} from './register'
 import {view as Bookpage} from './bookpage'
 import {view as Welcome} from './welcome'
-import Main from "./home/view/Main";
+import {view as Default} from './defaulturl'
+import {view as Booktable} from './booktable'
+import {view as Cart} from './shoppingcart'
 import Display from './BookDisplay'
-const { Footer } = Layout;
+
+const {Footer} = Layout;
 
 class App extends Component {
     render() {
@@ -19,22 +22,25 @@ class App extends Component {
                 <div>
                     <Topbar/>
                     <Home/>
-                    <Row className="App">
-                        <Route index path="/" component={Welcome} />
-                        <Route cache path="/login" component={Login} />
-                        <Route cache path="/register" component={Register} />
-                        <Route path="/book/:id/:name?" component={Bookpage} />
-
+                    <Row className="App" type="flex" justify="center">
+                        <Col span={16}>
+                            <Route index path="/>" component={Welcome}/>
+                            <Route cache path="/login" component={Login}/>
+                            <Route cache path="/register" component={Register}/>
+                            <Route path="/cart" component={Cart}/>
+                            <Route path="/book/:id/:name?" component={Bookpage}/>
+                            <Route miss component={Default}/>
+                        </Col>
                     </Row>
                     <Row type="flex" justify="space-around" align="middle">
                         <Col span={16}>
-                            <Route path="/>" component={Display} />
+                            <Route path="/>" component={Display}/>
                         </Col>
                     </Row>
 
                     <Row type="flex" justify="space-around" align="middle">
                         <Col span={16}>
-                            <Route cache path='/>' component={Main}/>
+                            <Route cache path='/>' component={Booktable}/>
                         </Col>
                     </Row>
 

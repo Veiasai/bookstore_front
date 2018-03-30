@@ -1,4 +1,4 @@
-import {observable, action} from 'mobx';
+import {observable} from 'mobx';
 
 class Bookstore {
     constructor(rootStore) {
@@ -55,9 +55,6 @@ class Bookstore {
         description: 'New York No. 1 Lake Park',
     }];
 
-    @action changeTodoTitle({index,title}){
-        this.data[index].class = title
-    }
 }
 
 export default Bookstore;

@@ -1,5 +1,5 @@
 
-import view from './view/Home'
+import view from './view/Homebar'
 import store from './Classstore'
 
 

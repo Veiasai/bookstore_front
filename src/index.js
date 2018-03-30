@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'mobx-react'
-import rootStore from './rootstore'
+import rootStore from './Rootstore'
 
 ReactDOM.render(<Provider rootStore={rootStore}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import {BackTop, Row, Col, Layout, Menu} from 'antd';
-import {Route, Link} from 'react-keeper'
-import Main from './Main'
+import {Row, Col,  Menu} from 'antd';
+import {Link} from 'react-keeper'
 
-
-const {Footer} = Layout;
 
 class Home extends Component {
     render() {
