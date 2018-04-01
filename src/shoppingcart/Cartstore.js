@@ -2,11 +2,14 @@ import {observable, action} from 'mobx';
 
 class Cartstore {
     constructor(rootStore) {
-        this.rootStore = rootStore
+        this.rootStore = rootStore;
     }
 
     @observable
     data = [];
+
+    @observable
+    loading = false;
 
     @action.bound
     addBook(book){
@@ -29,7 +32,7 @@ class Cartstore {
         {
             if (this.data[i].bookID === bookID)
             {
-                this.data[i] = {...newbook};
+                this.data[i] = {...this.data[i], ...newbook};
             }
         }
     }

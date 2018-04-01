@@ -2,6 +2,7 @@ import React from 'react'
 import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message} from 'antd';
 import {inject} from 'mobx-react'
 import {prefix, ip, registerAction} from "../../constVariable";
+import {Control} from 'react-keeper'
 
 
 const mobile = /^1\d{10}$/;
@@ -9,8 +10,8 @@ const password = /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,18}$/;
 
 @inject(['rootStore'])
 class RegistrationForm extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(...arguments);
         this.state = {
             confirmDirty: false,
             loading: false,
@@ -21,7 +22,6 @@ class RegistrationForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
                 this.register(values);
             }
         });
@@ -30,21 +30,33 @@ class RegistrationForm extends React.Component {
     register = async (values) => {
         const url = prefix + ip + registerAction;
         this.setState({loading: true});
+        let user = {
+            email:{},
+            username:{},
+            password:{}
+        };
+        user = {...values};
         try {
             const response = await fetch(url,
                 {
                     method: "POST",
                     headers:{
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                        'Content-Type':'application/json'
                     },
+                    credentials: "include",
                     mode: 'cors',
-                    body: "email=" + values.nickname + "&password=" + values.password + "&email=" + values.email,
+                    body: JSON.stringify(user),
                 });
             const json = await response.json();
-            console.log(json);
+            if (json.code === 200)
+            {
+                user.hasLogin = true;
+                this.props.rootStore.userStore.record(user);
+                message.info('注册成功');
+                Control.go('/', { name: 'React-Keeper' })
+            }
         }
         catch (err) {
-            console.log(err);
             message.info('网络异常');
         }
 
@@ -63,7 +75,7 @@ class RegistrationForm extends React.Component {
         } else {
             callback();
         }
-    }
+    };
 
     validateToNextPassword = (rule, value, callback) => {
         const form = this.props.form;
@@ -74,7 +86,7 @@ class RegistrationForm extends React.Component {
             form.validateFields(['confirm'], {force: true});
         }
         callback();
-    }
+    };
 
     compareMobileNumber = (rule, value, callback) => {
         if (value && mobile.test(value)) {
@@ -82,7 +94,7 @@ class RegistrationForm extends React.Component {
         } else {
             callback('the input should be 11 digits');
         }
-    }
+    };
 
     checkAgreement = (rule, value, callback) => {
         if (value === true) {
@@ -90,7 +102,7 @@ class RegistrationForm extends React.Component {
         } else {
             callback('Here can\'t be false');
         }
-    }
+    };
 
     render() {
         const FormItem = Form.Item;
@@ -166,7 +178,7 @@ class RegistrationForm extends React.Component {
                     <span>Nickname&nbsp;
                         <Tooltip title="What do you want others to call you?">
                                 <Icon type="question-circle-o"/></Tooltip></span>)}>
-                    {getFieldDecorator('nickname', {
+                    {getFieldDecorator('username', {
                         rules: [{required: true, message: 'Please input your nickname!', whitespace: true}],
                     })(
                         <Input/>

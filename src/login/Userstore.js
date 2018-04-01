@@ -7,8 +7,8 @@ class Userstore {
 
     @observable
     user = {
-        nickname:[],
-        Email:[],
+        username:[],
+        email:[],
         password:[],
         remember:false,
         hasLogin:false,

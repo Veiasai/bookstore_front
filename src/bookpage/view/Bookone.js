@@ -60,7 +60,7 @@ class Bookone extends Component {
         this.state = {
             bookID: this.props.params.id,
             bookName: this.props.params.name,
-            bookPrice: "loading",
+            bookPrice: 10,
             bookImg: "https://raw.githubusercontent.com/Veiasai/pictures/master/%E6%9A%97%E9%BB%91%E9%A6%86.jpg",
             bookClass: "loading",
             bookDescription: "loading",

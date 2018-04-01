@@ -1,9 +1,10 @@
 import {Affix, Row, Col, Divider} from 'antd';
 import React, {Component} from 'react';
 import {Link} from "react-keeper";
-import {inject} from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 
 @inject(["rootStore"])
+@observer
 class Topbar extends Component {
     render() {
         const user = this.props.rootStore.userStore.user;
@@ -15,7 +16,7 @@ class Topbar extends Component {
                             <text style={{color: '#fff'}}>(｡･∀･)ﾉﾞ嗨，欢迎光临！</text>
                             <Link to="/">龙卷风书店</Link>
                             <Divider type="vertical"/>
-                            <text style={{color: '#fff'}}>你好！{user.nickname}</text>
+                            <text style={{color: '#fff'}}>你好！{user.username}</text>
 
                         </Col>
                         <Col span={6} push={10}>
@@ -39,7 +40,6 @@ class Topbar extends Component {
                             <Divider type="vertical"/>
                             <Link to="/register">注册</Link>
                             <Divider type="vertical"/>
-                            <Link to="/cart">我的购物车</Link>
                         </Col>
                     </Row>
                 </Affix>

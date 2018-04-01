@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-keeper';
 import {Table, InputNumber, Icon, Button} from 'antd';
 import {inject, observer} from 'mobx-react';
-import {computed} from 'mobx'
+import {computed, observable} from 'mobx'
 
-@observer
+
 @inject(['rootStore'])
+@observer
 class Shoppingcart extends Component {
-
     updateBookCount = (bookID, num) => {
         let newbook = {
             bookCount: num,
@@ -18,19 +18,15 @@ class Shoppingcart extends Component {
     deleteBook = (bookID) => {
         console.log("delete", bookID);
         this.cartStore.deleteBook(bookID);
-        this.setState({data: this.cartStore.data.toJS()});
     };
 
     constructor(props) {
         super(props);
         this.cartStore = this.props.rootStore.cartStore;
-        this.state = {
-            data: this.cartStore.data.toJS(),
-            loading: false,
-        };
     }
 
     render() {
+        const {cartStore} = this.props.rootStore;
         const columns = [
             {
                 title: 'Name',
@@ -73,8 +69,8 @@ class Shoppingcart extends Component {
                 ),
             }];
 
-        return <Table columns={columns} dataSource={this.state.data}
-                      loading={this.state.loading}/>;
+        return <Table columns={columns} dataSource={cartStore.data.toJS()}
+                      loading={cartStore.loading}/>;
     }
 }
 
