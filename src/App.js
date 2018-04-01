@@ -8,9 +8,11 @@ import {view as Login} from './login'
 import {view as Register} from './register'
 import {view as Bookpage} from './bookpage'
 import {view as Welcome} from './welcome'
-import {view as Default} from './defaulturl'
+import {view as Default} from './missrouter'
 import {view as Booktable} from './booktable'
 import {view as Cart} from './shoppingcart'
+import {view as Userzone} from './userzone'
+import {view as Bookupload} from './bookupload'
 import Display from './BookDisplay'
 
 const {Footer} = Layout;
@@ -22,12 +24,14 @@ class App extends Component {
                 <div>
                     <Topbar/>
                     <Home/>
-                    <Row className="App" type="flex" justify="center">
+                    <Row className="App" type="flex" justify="space-around" align="middle">
                         <Col span={16}>
                             <Route index path="/>" component={Welcome}/>
                             <Route cache path="/login" component={Login}/>
                             <Route cache path="/register" component={Register}/>
+                            <Route path="/myzone" component={Userzone}/>
                             <Route path="/cart" component={Cart}/>
+                            <Route path="/uploadbook" component={Bookupload}/>
                             <Route path="/book/:id/:name?" component={Bookpage}/>
                             <Route miss component={Default}/>
                         </Col>

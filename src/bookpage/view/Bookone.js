@@ -47,12 +47,20 @@ class Bookone extends Component {
             bookClass: {},
         };
         book = {...this.state};
-        if (this.props.rootStore.cartStore.addBook(book) === 1) {
-            message.info('购物车中已经有这本书');
+        if (this.props.rootStore.userStore.user.hasLogin)
+        {
+            if (this.props.rootStore.cartStore.addBook(book) === 1) {
+                message.info('购物车中已经有这本书');
+            }
+            else {
+                message.info('添加至购物车成功');
+            }
         }
-        else {
-            message.info('添加至购物车成功');
+        else
+        {
+            message.info('您还没有登录哦');
         }
+
     };
 
     constructor(props,) {

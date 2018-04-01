@@ -16,7 +16,6 @@ class Shoppingcart extends Component {
     };
 
     deleteBook = (bookID) => {
-        console.log("delete", bookID);
         this.cartStore.deleteBook(bookID);
     };
 

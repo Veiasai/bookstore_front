@@ -11,11 +11,6 @@ const FormItem = Form.Item;
 
 @inject(['rootStore'])
 class Loginform extends Component {
-    componentWillMount()
-    {
-        this.login();
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -26,7 +21,8 @@ class Loginform extends Component {
     };
     login = async (values) => {
         const url = prefix + ip + loginAction;
-        this.setState({loading: true});
+        if (values !== null)
+            this.setState({loading: true});
         let user = {
             email: {},
             password: {}
@@ -38,7 +34,7 @@ class Loginform extends Component {
                 {
                     method: "POST",
                     headers: {
-                        'Content-Type':'application/json'
+                        'Content-Type': 'application/json'
                     },
                     credentials: "include",
                     mode: 'cors',
@@ -54,11 +50,13 @@ class Loginform extends Component {
                 Control.go('/', {name: 'React-Keeper'})
             }
             else {
-                message.info(json.message);
+                if (values !== null)
+                    message.info(json.message);
             }
         }
         catch (err) {
-            message.info('网络异常');
+            if (values !== null)
+                message.info('网络异常');
         }
         this.setState({loading: false});
     };
@@ -68,6 +66,10 @@ class Loginform extends Component {
         this.state = {
             loading: false,
         };
+    }
+
+    componentWillMount() {
+        this.login(null);
     }
 
     render() {
