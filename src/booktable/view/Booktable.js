@@ -9,12 +9,12 @@ import {inject} from "mobx-react/index";
 class Booktable extends Component {
     constructor(props) {
         super(props);
-        const bookStore = this.props.rootStore.bookStore;
+        this.bookStore = this.props.rootStore.bookStore;
         this.state = {
             filterDropdownVisible: false,
             searchText: '',
-            data: bookStore.data,
             filtered: false,
+            data:this.bookStore.data.toJS(),
             pagination: {total: 50},
             loading: false,
         };
@@ -22,11 +22,11 @@ class Booktable extends Component {
 
     onInputChange = (e) => {
         this.setState({searchText: e.target.value});
-    }
+    };
 
     onSearch = () => {
         const {searchText} = this.state;
-        const {data} = this.props.rootStore.bookStore;
+        const {data} = this.bookStore;
         const reg = new RegExp(searchText, 'gi');
         this.setState({
             filterDropdownVisible: false,
@@ -48,7 +48,7 @@ class Booktable extends Component {
                 };
             }).filter(record => !!record),
         });
-    }
+    };
 
     render() {
         const columns = [

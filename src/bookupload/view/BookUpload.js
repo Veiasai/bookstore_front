@@ -8,6 +8,10 @@ import BookImgUpload from './BookImgUpload'
 class BookUpload extends Component {
     render() {
         return (
+            <div>
+            <Row type="flex" justify="space-around" >
+                <h2>填写图书信息，等待管理员审核。</h2>
+            </Row>
             <Row type="flex" justify="space-around">
                 <Col span={6}>
                     <BookInput/>
@@ -17,6 +21,7 @@ class BookUpload extends Component {
                     <text>图书图片</text>
                 </Col>
             </Row>
+            </div>
         )
     }
 }

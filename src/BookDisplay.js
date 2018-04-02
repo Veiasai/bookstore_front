@@ -15,7 +15,7 @@ class BookDisplay extends Component {
                 {
                     test.map((item,i)=> {
                         return (
-                            <div >
+                            <div key={i}>
                                 <img style={{width:1500 ,height:600}} src={item} alt="loading" />
                             </div>
                         )

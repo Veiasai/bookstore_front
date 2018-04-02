@@ -20,6 +20,7 @@ class Topbar extends Component {
 
                         </Col>
                         <Col span={6} push={10}>
+                            {user.level ? <Link to="/manager">管理员</Link>:null}
                             <Divider type="vertical"/>
                             <Link to="/myzone">个人信息</Link>
                             <Divider type="vertical"/>

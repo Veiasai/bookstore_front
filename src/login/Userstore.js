@@ -7,12 +7,12 @@ class Userstore {
 
     @observable
     user = {
-        username:[],
+        username:"Veia",
         email:[],
         password:[],
         remember:false,
-        hasLogin:false,
-        level:0,
+        hasLogin:true,
+        level:1,
     };
 
     @observable

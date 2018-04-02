@@ -1,26 +1,15 @@
+import {inject, observer} from 'mobx-react';
 import React, {Component} from 'react';
 import {Link} from 'react-keeper';
 import {Table, InputNumber, Button} from 'antd';
-import {inject, observer} from 'mobx-react';
 
 @inject(['rootStore'])
 @observer
-class Shoppingcart extends Component {
+class ManageBook extends Component {
     constructor(props) {
         super(props);
-        this.cartStore = this.props.rootStore.cartStore;
+        this.managerStore = this.props.rootStore.managerStore;
     }
-
-    updateBookCount = (bookID, num) => {
-        let newbook = {
-            bookCount: num,
-        };
-        this.cartStore.updateBook(bookID, newbook);
-    };
-
-    deleteBook = (bookID) => {
-        this.cartStore.deleteBook(bookID);
-    };
 
     render() {
         const columns = [
@@ -45,15 +34,23 @@ class Shoppingcart extends Component {
                 title: 'Price',
                 dataIndex: 'bookPrice',
                 key: 'price',
-            }, {
-                title: 'Count',
-                dataIndex: 'bookCount',
-                key: 'count',
                 render: (text, record) => (
                     <span>
-                        <InputNumber min={1} max={record.bookStock} defaultValue={record.bookCount}
+                        <InputNumber min={1} defaultValue={record.bookPrice}
                                      onChange={(value) => {
-                                         this.updateBookCount(record.bookID, value);
+                                         ;
+                                     }}/>
+                    </span>
+                ),
+            }, {
+                title: 'Stock',
+                dataIndex: 'bookStock',
+                key: 'stock',
+                render: (text, record) => (
+                    <span>
+                        <InputNumber min={0} max={999} defaultValue={record.bookStock}
+                                     onChange={(value) => {
+                                         ;
                                      }}/>
                     </span>
                 ),
@@ -61,13 +58,13 @@ class Shoppingcart extends Component {
                 title: 'Delete',
                 key: 'delete',
                 render: (text, record) => (
-                    <span><Button onClick={()=>{this.deleteBook(record.bookID)}} icon="minus-circle"/></span>
+                    <span><Button onClick={()=>{}} icon="minus-circle"/></span>
                 ),
             }];
 
-        return <Table columns={columns} dataSource={this.cartStore.data.toJS()}
-                      loading={this.cartStore.loading} />;
+        return <Table columns={columns} dataSource={this.managerStore.bookData.toJS()}
+                      loading={this.managerStore.bookloading}/>;
     }
 }
 
-export default Shoppingcart;
+export default ManageBook;
