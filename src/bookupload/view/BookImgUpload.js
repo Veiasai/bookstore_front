@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Upload, Icon, message } from 'antd';
+import {inject} from "mobx-react/index";
 
 function getBase64(img, callback) {
     const reader = new FileReader();
@@ -19,6 +20,7 @@ function beforeUpload(file) {
     return isJPG && isLt2M;
 }
 
+@inject(['rootStore'])
 class BookImgUpload extends Component {
     state = {
         loading: false,
@@ -35,7 +37,7 @@ class BookImgUpload extends Component {
                 loading: false,
             }));
         }
-    }
+    };
     render() {
         const uploadButton = (
             <div>
@@ -44,6 +46,7 @@ class BookImgUpload extends Component {
             </div>
         );
         const imageUrl = this.state.imageUrl;
+        {this.props.rootStore.bookStore.uploadBookImg = imageUrl}
         return (
             <Upload
                 name="avatar"

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Row, Col, Tabs, Icon} from 'antd';
+import {Row, Col, Tabs, Icon} from 'antd';
 import ManageBook from './ManageBook'
 import ManageUser from './ManageUser'
 

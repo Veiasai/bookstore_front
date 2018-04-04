@@ -37,6 +37,7 @@ class Bookone extends Component {
 
     addBooktoCart = () => {
         let book = {
+            bookSelect:false,
             bookID: {},
             bookName: {},
             bookPrice: {},

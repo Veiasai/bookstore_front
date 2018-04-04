@@ -13,7 +13,7 @@ class BookUpload extends Component {
                 <h2>填写图书信息，等待管理员审核。</h2>
             </Row>
             <Row type="flex" justify="space-around">
-                <Col span={6}>
+                <Col span={8}>
                     <BookInput/>
                 </Col>
                 <Col span={6}>

@@ -54,7 +54,7 @@ class Booktable extends Component {
         const columns = [
             {
                 title: 'Name',
-                dataIndex: 'bookname',
+                dataIndex: 'bookName',
                 key: 'name',
                 render: (text,record) => <Link to={"/book/"+record.key + "/" + record.bookname }>{text}</Link>,
                 filterDropdown: (
@@ -79,24 +79,20 @@ class Booktable extends Component {
             },
             {
                 title: 'Writer',
-                dataIndex: 'writer',
+                dataIndex: 'bookWriter',
                 key: 'writer',
             }, {
                 title: 'Class',
-                dataIndex: 'class',
+                dataIndex: 'bookClass',
                 key: 'class',
             }, {
                 title: 'Date',
-                dataIndex: 'date',
+                dataIndex: 'bookDate',
                 key: 'date',
             }, {
                 title: 'Price',
-                dataIndex: 'price',
+                dataIndex: 'bookPrice',
                 key: 'price',
-            }, {
-                title: 'Description',
-                dataIndex: 'description',
-                key: 'description',
             }];
 
         return <Table columns={columns} dataSource={this.state.data}

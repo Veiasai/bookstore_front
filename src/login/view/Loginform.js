@@ -40,6 +40,7 @@ class Loginform extends Component {
                     mode: 'cors',
                     body: JSON.stringify(user),
                 });
+
             const json = await response.json();
             if (json.code === 200) {
                 user.hasLogin = true;

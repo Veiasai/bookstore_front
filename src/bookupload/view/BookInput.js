@@ -1,7 +1,16 @@
 import React from 'react'
-import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message} from 'antd';
+import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message, DatePicker} from 'antd';
 import {inject} from 'mobx-react'
 import {prefix, ip, postBookAction} from "../../constVariable";
+
+const MonthPicker = DatePicker.MonthPicker;
+const { TextArea } = Input;
+
+const IntegerReg = /^[0-9]+$/
+
+const config = {
+    rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+};
 
 @inject(['rootStore'])
 class BookInput extends React.Component {
@@ -16,28 +25,58 @@ class BookInput extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                this.submit(values);
+                let img = this.props.rootStore.bookStore.uploadBookImg;
+                if (img)
+                    this.submit(values, img);
+                else
+                    message.info("图片不能为空");
             }
         });
     };
 
-    submit = async (values) => {
+    validatorInteger = (rule, value, callback) => {
+        if (value && IntegerReg.test(value)) {
+            callback();
+        } else {
+            callback('The input must be Integer');
+        }
+    };
+
+    submit = async (values, img) => {
         const url = prefix + ip + postBookAction;
         this.setState({loading: true});
         try {
+            let singleBook = {
+                bookName: {},
+                bookWriter:{},
+                bookClass:{},
+                bookDate:{},
+                bookPrice: {},
+            };
+            singleBook = {...values};
+            let bookImgAndDescrption = {
+                bookImg:img,
+                bookDescription:values.bookDescription,
+            };
+
+            let obj = {
+                singleBook: singleBook,
+                bookImgAndDescrption: bookImgAndDescrption,
+            };
+
             const response = await fetch(url,
                 {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    credentials: "include",
                     mode: 'cors',
-                    body: {},
+                    body: JSON.stringify(obj),
                 });
+
             const json = await response.json();
             if (json.code === 200) {
-
+                message.info("上传成功");
             }
         }
         catch (err) {
@@ -94,6 +133,8 @@ class BookInput extends React.Component {
                 >
                     {getFieldDecorator('bookPrice', {
                         rules: [{
+                            validator: this.validatorInteger,
+                        },{
                             required: true, message: 'Please input price!',
                         }],
                     })(
@@ -104,12 +145,9 @@ class BookInput extends React.Component {
                     {...formItemLayout}
                     label="BookDate"
                 >
-                    {getFieldDecorator('bookDate', {
-                        rules: [{
-                            required: true, message: 'Please input date!',
-                        }],
-                    })(
-                        <Input/>
+                    {getFieldDecorator('bookDate', config)
+                    (
+                        <MonthPicker />
                     )}
                 </FormItem>
                 <FormItem
@@ -147,7 +185,7 @@ class BookInput extends React.Component {
                             required: true, message: 'Please input description!',
                         }],
                     })(
-                        <Input/>
+                        <TextArea rows={4} />
                     )}
                 </FormItem>
 
