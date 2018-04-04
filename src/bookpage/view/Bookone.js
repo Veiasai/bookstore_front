@@ -10,25 +10,26 @@ class Bookone extends Component {
         const url = prefix + ip + getBookAction;
         this.setState({loading: true});
         try {
-            const response = await fetch(url,
+            const response = await fetch(url + "/" + bookID,
                 {
-                    method: "POST",
+                    method: "GET",
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                        'Content-Type': 'charset=UTF-8'
                     },
                     mode: 'cors',
-                    body: "bookid=" + bookID,
                 });
             const json = await response.json();
             console.log(json);
-            this.setState(json);
+            this.setState({...(json.bookImgAndDescrption), ...(json.singleBook)});
+            message.info("加载成功");
         }
         catch (err) {
-            console.log(err);
             message.info('网络异常');
         }
+
         this.setState({loading: false});
     };
+
     onChange = (value) => {
         this.setState({
             bookCount: value,
@@ -47,6 +48,7 @@ class Bookone extends Component {
             bookCount: 0,
             bookClass: {},
         };
+
         book = {...this.state};
         if (this.props.rootStore.userStore.user.hasLogin)
         {
@@ -66,6 +68,7 @@ class Bookone extends Component {
 
     constructor(props,) {
         super(props);
+        this.bookStore = this.props.rootStore.bookStore;
         this.state = {
             bookID: this.props.params.id,
             bookName: this.props.params.name,
@@ -98,12 +101,12 @@ class Bookone extends Component {
                             >
                                 <Card.Meta
                                     title={this.state.bookName}
-                                    description={this.state.bookDate}
+                                    description={this.state.bookWriter}
                                 />
                             </Card>
                         </Row>
                         <Row>
-                            <text>最大库存：{this.state.bookStock} 购买数量：{this.state.bookCount} 金额：{this.state.bookCount * this.state.bookPrice}</text>
+                            <text>最大库存：{this.state.bookStock} 价格：{this.state.bookPrice} 购买数量：{this.state.bookCount} 金额：{this.state.bookCount * this.state.bookPrice}</text>
                             <Slider min={1} max={this.state.bookStock} onChange={this.onChange}
                                     value={this.state.bookCount}/>
                         </Row>
@@ -112,7 +115,7 @@ class Bookone extends Component {
                         </Row>
                     </Col>
                     <Col>
-                        <Card title="Card title" bordered={false} style={{width: 400, height: 400}}>Card content</Card>
+                        <Card title="简介" bordered={false} style={{width: 400, height: 400}}>{this.state.bookDescription}</Card>
                     </Col>
                 </Row>
             </Spin>

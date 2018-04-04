@@ -5,3 +5,4 @@ export const loginAction = '/login';
 export const getBookAction = '/getbook';
 export const postBookAction = '/postbook';
 export const getUserInfoAction = '/getuser';
+export const searchBookAction = '/searchbooks';

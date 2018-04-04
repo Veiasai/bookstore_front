@@ -53,10 +53,12 @@ class BookImgUpload extends Component {
                 listType="picture-card"
                 className="avatar-uploader"
                 showUploadList={false}
-                action="//jsonplaceholder.typicode.com/posts/"
+                action="http://localhost:8080/postbookimg"
+
                 beforeUpload={beforeUpload}
                 onChange={this.handleChange}
             >
+
                 {imageUrl ? <img src={imageUrl} alt="" /> : uploadButton}
             </Upload>
         );
