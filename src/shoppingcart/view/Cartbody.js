@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-keeper';
 import {Table, InputNumber, Button} from 'antd';
 import {inject, observer} from 'mobx-react';
+import moment from "moment/moment";
 
 @inject(['rootStore'])
 @observer
@@ -57,6 +58,9 @@ class Cartbody extends Component {
                 title: 'Date',
                 dataIndex: 'bookDate',
                 key: 'date',
+                render: (text, record) => {
+                    return moment(text).format("YYYY-MM");
+                }
             }, {
                 title: 'Price',
                 dataIndex: 'bookPrice',

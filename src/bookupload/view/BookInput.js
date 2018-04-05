@@ -27,7 +27,9 @@ class BookInput extends React.Component {
             if (!err) {
                 let img = this.props.rootStore.bookStore.uploadBookImg;
                 if (img)
+                {
                     this.submit(values, img);
+                }
                 else
                     message.info("图片不能为空");
             }

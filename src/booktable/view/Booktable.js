@@ -3,6 +3,7 @@ import {Table, Input, Button, Icon} from 'antd';
 import {Link} from 'react-keeper';
 import {observer} from 'mobx-react';
 import {inject} from "mobx-react/index";
+import moment from 'moment';
 
 @inject(['rootStore'])
 @observer
@@ -33,6 +34,9 @@ class Booktable extends Component {
                 title: 'Date',
                 dataIndex: 'bookDate',
                 key: 'date',
+                render: (text, record) => {
+                    return moment(text).format("YYYY-MM");
+                }
             }, {
                 title: 'Price',
                 dataIndex: 'bookPrice',
