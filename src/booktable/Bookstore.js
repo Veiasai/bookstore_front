@@ -17,7 +17,6 @@ class Bookstore {
     searchbook = async (conditions) => {
         const url = prefix + ip + searchBookAction;
         this.loading = true;
-        console.log(conditions);
         try {
             const response = await fetch(url,
                 {
@@ -31,7 +30,6 @@ class Bookstore {
                 });
 
             const json = await response.json();
-            console.log(json);
             if (json.code === 200) {
                 this.data = json.books;
             }

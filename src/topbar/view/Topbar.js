@@ -7,7 +7,9 @@ import {inject, observer} from 'mobx-react'
 @observer
 class Topbar extends Component {
     render() {
-        const user = this.props.rootStore.userStore.user;
+
+        const userStore = this.props.rootStore.userStore;
+        const user = userStore.user;
         if (user.hasLogin === true)
             return (
                 <Affix>
@@ -25,6 +27,8 @@ class Topbar extends Component {
                             <Link to="/myzone">个人信息</Link>
                             <Divider type="vertical"/>
                             <Link to="/cart">我的购物车</Link>
+                            <Divider type="vertical"/>
+                            <a onClick={userStore.logout}>注销</a>
                         </Col>
                     </Row>
                 </Affix>

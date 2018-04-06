@@ -1,3 +1,3 @@
-import view from './view/Bookone.js'
+import view from './view/SingleBook.js'
 
 export { view};

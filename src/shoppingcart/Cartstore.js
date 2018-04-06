@@ -1,4 +1,7 @@
 import {observable, action, computed} from 'mobx';
+import {getBookAction, ip, postCartAction, prefix} from "../constVariable";
+import {Control} from 'react-keeper'
+import {message} from "antd/lib/index";
 
 class Cartstore {
     @observable
@@ -8,6 +11,7 @@ class Cartstore {
 
     @observable
     selectedRowKeys = [];
+
 
     constructor(rootStore) {
         this.rootStore = rootStore;
@@ -31,6 +35,15 @@ class Cartstore {
         return Account;
     }
 
+    @computed get getCart() {
+        let bookIDs = [];
+        let i = 0, len = this.data.length;
+        for (i, len; i < len; i++) {
+            bookIDs.push(this.data[i].bookID);
+        }
+        return bookIDs;
+    }
+
     @action.bound
     addBook(book) {
         let i = 0, len = this.data.length;
@@ -40,6 +53,7 @@ class Cartstore {
             }
         }
         this.data.push(book);
+        this.cartPost();
         return 0;
     }
 
@@ -62,6 +76,7 @@ class Cartstore {
                 break;
             }
         }
+        this.cartPost();
     }
 
     @action.bound
@@ -76,6 +91,39 @@ class Cartstore {
             this.data.splice(this.selectedRowKeys[i],1);
         }
         this.selectedRowKeys = [];
+        this.cartPost();
+    }
+
+    @action.bound
+    cartPost = async ()=> {
+        const url = prefix + ip + postCartAction;
+        try {
+            let body = {};
+            body.bookIDs = this.getCart;
+            console.log(body);
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
+                    mode: 'cors',
+                    body: JSON.stringify(body),
+                });
+            const json = await response.json();
+            console.log(json);
+            if (json.code === 403)
+            {
+                message.info('登录失效,购物车未能上传');
+                this.rootStore.userStore.user.hasLogin = false;
+                Control.go('/', {name: 'React-Keeper'})
+            }
+        }
+        catch (err) {
+            message.info('网络异常,购物车未能上传');
+        }
+
     }
 }
 

@@ -1,12 +1,14 @@
 import React from 'react'
-import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message, DatePicker} from 'antd';
+import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message, DatePicker, Radio } from 'antd';
 import {inject} from 'mobx-react'
 import {prefix, ip, postBookAction} from "../../constVariable";
 
 const MonthPicker = DatePicker.MonthPicker;
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
 const { TextArea } = Input;
 
-const IntegerReg = /^[0-9]+$/
+const IntegerReg = /^[0-9]+$/;
 
 const config = {
     rules: [{ type: 'object', required: true, message: 'Please select time!' }],
@@ -16,6 +18,7 @@ const config = {
 class BookInput extends React.Component {
     constructor(props, context) {
         super(...arguments);
+        this.classStore = this.props.rootStore.classStore;
         this.state = {
             loading: false,
         };
@@ -33,6 +36,7 @@ class BookInput extends React.Component {
                 else
                     message.info("图片不能为空");
             }
+            console.log(values.bookClass);
         });
     };
 
@@ -174,7 +178,11 @@ class BookInput extends React.Component {
                             required: true, message: 'Please input class!',
                         }],
                     })(
-                        <Input/>
+                        <RadioGroup>
+                            {this.classStore.catalogue.map((item,i) => {
+                                return <RadioButton value={i}>{item}</RadioButton>
+                            })}
+                        </RadioGroup>
                     )}
                 </FormItem>
 

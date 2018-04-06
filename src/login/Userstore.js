@@ -1,4 +1,7 @@
 import {observable, action} from 'mobx';
+import {ip, logoutAction, postCartAction, prefix} from "../constVariable";
+import {Control} from "react-keeper";
+import {message} from "antd/lib/index";
 
 class Userstore {
     constructor(rootStore) {
@@ -11,8 +14,8 @@ class Userstore {
         email:[],
         password:[],
         remember:false,
-        hasLogin:true,
-        level:1,
+        hasLogin:false,
+        level:0,
     };
 
     @observable
@@ -33,6 +36,30 @@ class Userstore {
     @action.bound
     record(value) {
         this.user = {...value};
+    }
+
+    @action.bound
+    logout = async ()=> {
+        const url = prefix + ip + logoutAction;
+        try {
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
+                    mode: 'cors',
+                    body: "{}",
+                });
+            const json = await response.json();
+            console.log(json);
+            this.user.hasLogin = false;
+            Control.go('/', {name: 'React-Keeper'})
+        }
+        catch (err) {
+            message.info('网络异常');
+        }
     }
 
 }

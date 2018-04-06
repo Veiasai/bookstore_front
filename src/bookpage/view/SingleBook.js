@@ -19,9 +19,7 @@ class Bookone extends Component {
                     mode: 'cors',
                 });
             const json = await response.json();
-            console.log(json);
             this.setState({...(json.bookImgAndDescrption), ...(json.singleBook)});
-            message.info("加载成功");
         }
         catch (err) {
             message.info('网络异常');
