@@ -104,7 +104,7 @@ class Bookone extends Component {
                             </Card>
                         </Row>
                         <Row>
-                            <text>最大库存：{this.state.bookStock} 价格：{this.state.bookPrice} 购买数量：{this.state.bookCount} 金额：{this.state.bookCount * this.state.bookPrice}</text>
+                            <text>库存：{this.state.bookStock} 价格：{this.state.bookPrice} 购买数量：{this.state.bookCount} 金额：{this.state.bookCount * this.state.bookPrice}</text>
                             <Slider min={1} max={this.state.bookStock} onChange={this.onChange}
                                     value={this.state.bookCount}/>
                         </Row>

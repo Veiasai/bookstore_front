@@ -8,3 +8,7 @@ export const postBookAction = '/postbook';
 export const getUserInfoAction = '/getuser';
 export const searchBookAction = '/searchbooks';
 export const postCartAction = '/postcart';
+export const getCartAction = '/getcart';
+export const uploadbookimg = '/postbookimg';
+export const postOrderAction = '/postorder';
+export const getOrderAction = '/getorder';

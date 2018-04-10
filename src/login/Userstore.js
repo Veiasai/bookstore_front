@@ -14,7 +14,7 @@ class Userstore {
         email:[],
         password:[],
         remember:false,
-        hasLogin:false,
+        hasLogin:true,
         level:0,
     };
 

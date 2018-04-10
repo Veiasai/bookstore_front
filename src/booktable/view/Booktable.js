@@ -10,6 +10,7 @@ import moment from 'moment';
 class Booktable extends Component {
     constructor(props) {
         super(props);
+        this.classStore = this.props.rootStore.classStore;
         this.bookStore = this.props.rootStore.bookStore;
         this.bookStore.init();
     }
@@ -30,6 +31,9 @@ class Booktable extends Component {
                 title: 'Class',
                 dataIndex: 'bookClass',
                 key: 'class',
+                render: (text, record) => {
+                    return this.classStore.catalogue[text];
+                }
             }, {
                 title: 'Date',
                 dataIndex: 'bookDate',

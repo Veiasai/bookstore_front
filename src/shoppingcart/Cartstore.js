@@ -1,7 +1,8 @@
 import {observable, action, computed} from 'mobx';
-import {getBookAction, ip, postCartAction, prefix} from "../constVariable";
+import {getBookAction, getCartAction, ip, postCartAction, postOrderAction, prefix} from "../constVariable";
 import {Control} from 'react-keeper'
 import {message} from "antd/lib/index";
+import moment from 'moment'
 
 class Cartstore {
     @observable
@@ -11,7 +12,103 @@ class Cartstore {
 
     @observable
     selectedRowKeys = [];
+    @action.bound
+    cartPost = async () => {
+        const url = prefix + ip + postCartAction;
+        try {
+            let body = {};
+            body.bookIDs = this.getCart;
+            console.log(body);
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
+                    mode: 'cors',
+                    body: JSON.stringify(body),
+                });
+            const json = await response.json();
+            console.log(json);
+            if (json.code === 403) {
+                message.info('登录失效,购物车未能上传');
+                this.rootStore.userStore.user.hasLogin = false;
+                Control.go('/', {name: 'React-Keeper'})
+            }
+        }
+        catch (err) {
+            message.info('网络异常,购物车未能上传');
+        }
 
+    };
+    @action.bound
+    orderPost = async (books) => {
+        const url = prefix + ip + postOrderAction;
+        try {
+            let order = {};
+            order.books = books;
+            order.date = moment().format("YYYY-MM");
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
+                    mode: 'cors',
+                    body: JSON.stringify(order),
+                });
+            const json = await response.json();
+            if (json.code === 403) {
+                message.info('登录失效,订单结算失败');
+                this.rootStore.userStore.user.hasLogin = false;
+                Control.go('/', {name: 'React-Keeper'})
+            }
+            else if (json.code === 400) {
+                message.info('订单信息错误');
+                this.cartGet();
+            }
+        }
+        catch (err) {
+            message.info('网络异常,订单结算失败');
+        }
+    };
+    @action.bound
+    cartGet = async () => {
+        const url = prefix + ip + getCartAction;
+        try {
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
+                    mode: 'cors',
+                    body: "{}",
+                });
+            const json = await response.json();
+            console.log(json);
+            if (json.code === 403) {
+                message.info('登录失效');
+                this.rootStore.userStore.user.hasLogin = false;
+                Control.go('/', {name: 'React-Keeper'})
+            }
+            else if (json.code === 200) {
+                if (json.books) {
+                    let books = json.books;
+                    let i = 0, len = books.length;
+                    for (i,len; i<len;i++)
+                        books[i].bookCount = 1;
+                    this.data = books;
+                }
+            }
+        }
+        catch (err) {
+            message.info('网络异常,购物车加载失败');
+        }
+    };
 
     constructor(rootStore) {
         this.rootStore = rootStore;
@@ -85,45 +182,31 @@ class Cartstore {
     }
 
     @action.bound
-    deleteSelection() {
+    balanceSelection() {
+        let books = [];
         let i = this.selectedRowKeys.length - 1;
-        for (i; i >= 0; i--) {
-            this.data.splice(this.selectedRowKeys[i],1);
+        if (i === -1) {
+            message.info('空订单');
+            return 0;
         }
-        this.selectedRowKeys = [];
-        this.cartPost();
+        for (i; i >= 0; i--) {
+            books.push(this.data[this.selectedRowKeys[i]]);
+        }
+        this.orderPost(books);
+        this.deleteSelection();
     }
 
     @action.bound
-    cartPost = async ()=> {
-        const url = prefix + ip + postCartAction;
-        try {
-            let body = {};
-            body.bookIDs = this.getCart;
-            console.log(body);
-            const response = await fetch(url,
-                {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include",
-                    mode: 'cors',
-                    body: JSON.stringify(body),
-                });
-            const json = await response.json();
-            console.log(json);
-            if (json.code === 403)
-            {
-                message.info('登录失效,购物车未能上传');
-                this.rootStore.userStore.user.hasLogin = false;
-                Control.go('/', {name: 'React-Keeper'})
-            }
+    deleteSelection() {
+        let i = this.selectedRowKeys.length - 1;
+        if (i === -1) {
+            return 0;
         }
-        catch (err) {
-            message.info('网络异常,购物车未能上传');
+        for (i; i >= 0; i--) {
+            this.data.splice(this.selectedRowKeys[i], 1);
         }
-
+        this.selectedRowKeys = [];
+        this.cartPost();
     }
 }
 

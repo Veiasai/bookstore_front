@@ -25,6 +25,9 @@ class Cartbody extends Component {
     constructor(props) {
         super(props);
         this.cartStore = this.props.rootStore.cartStore;
+        if (this.cartStore.data.length === 0)
+            this.cartStore.cartGet();
+
     }
 
     render() {

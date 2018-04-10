@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Upload, Icon, message } from 'antd';
 import {inject} from "mobx-react/index";
+import {prefix, ip, uploadbookimg} from '../../constVariable'
 
 function getBase64(img, callback) {
     const reader = new FileReader();
@@ -53,8 +54,7 @@ class BookImgUpload extends Component {
                 listType="picture-card"
                 className="avatar-uploader"
                 showUploadList={false}
-                action="http://localhost:8080/postbookimg"
-
+                action={prefix + ip + uploadbookimg}
                 beforeUpload={beforeUpload}
                 onChange={this.handleChange}
             >
