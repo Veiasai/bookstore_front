@@ -48,7 +48,7 @@ class Cartstore {
         try {
             let order = {};
             order.books = books;
-            order.date = moment().format("YYYY-MM");
+            order.date = moment().format("YYYY-MM-DD");
             const response = await fetch(url,
                 {
                     method: "POST",

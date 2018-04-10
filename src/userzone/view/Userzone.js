@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Icon, Upload, Modal, Card, Tabs, Tooltip} from 'antd';
 import {inject, observer} from 'mobx-react';
 import UploadIcon from "./UploadIcon";
+import Userorders from './Userorders'
 
 const TabPane = Tabs.TabPane;
 const {Meta} = Card;
@@ -9,6 +10,11 @@ const {Meta} = Card;
 @inject(['rootStore'])
 @observer
 class Userzone extends Component {
+    constructor(props) {
+        super(props);
+        this.orderStore = this.props.rootStore.orderStore;
+        this.orderStore.orderGet();
+    }
     render() {
         return (
             <Tabs defaultActiveKey="1">
@@ -29,7 +35,7 @@ class Userzone extends Component {
                     <UploadIcon/>
                 </TabPane>
                 <TabPane tab="My Orders" key="3">
-
+                    <Userorders/>
                 </TabPane>
             </Tabs>
         );

@@ -20,11 +20,21 @@
       <file leaf-file-name="Cartstore.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shoppingcart/Cartstore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="100" column="50" lean-forward="false" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
+            <state relative-caret-position="1650">
+              <caret line="180" column="47" lean-forward="false" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cartbody.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartbody.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="92" column="49" lean-forward="true" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -39,33 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cartsubmit.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartsubmit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cartbody.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartbody.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Orderstore.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Orderstore.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/orders/Orderstore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+            <state relative-caret-position="225">
+              <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -84,8 +72,8 @@
       <file leaf-file-name="Userorders.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/userzone/view/Userorders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="30" column="58" lean-forward="false" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -93,12 +81,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Userzone.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Userzone.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/userzone/view/Userzone.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="175">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,7 +137,6 @@
         <option value="$PROJECT_DIR$/src/userzone/view/Upload.js" />
         <option value="$PROJECT_DIR$/src/userzone/view/Uploadimg.js" />
         <option value="$PROJECT_DIR$/src/userzone/view/UploadIcon.js" />
-        <option value="$PROJECT_DIR$/src/userzone/view/Userzone.js" />
         <option value="$PROJECT_DIR$/src/home/view/Homebar.js" />
         <option value="$PROJECT_DIR$/src/managerPage/index.js" />
         <option value="$PROJECT_DIR$/src/missrouter/view/Default.js" />
@@ -167,19 +156,20 @@
         <option value="$PROJECT_DIR$/src/bookupload/view/BookInput.js" />
         <option value="$PROJECT_DIR$/src/topbar/view/Topbar.js" />
         <option value="$PROJECT_DIR$/src/bookupload/view/BookImgUpload.js" />
-        <option value="$PROJECT_DIR$/src/booktable/view/Booktable.js" />
         <option value="$PROJECT_DIR$/src/login/view/Loginform.js" />
         <option value="$PROJECT_DIR$/src/login/Userstore.js" />
         <option value="$PROJECT_DIR$/src/constVariable/index.js" />
         <option value="$PROJECT_DIR$/src/shoppingcart/view/Cartsubmit.js" />
         <option value="$PROJECT_DIR$/src/bookpage/view/SingleBook.js" />
-        <option value="$PROJECT_DIR$/src/shoppingcart/Cartstore.js" />
-        <option value="$PROJECT_DIR$/src/shoppingcart/view/Cartbody.js" />
         <option value="$PROJECT_DIR$/src/orders/index.js" />
         <option value="$PROJECT_DIR$/src/orders/view/Orderpage.js" />
         <option value="$PROJECT_DIR$/src/Rootstore.js" />
-        <option value="$PROJECT_DIR$/src/userzone/view/Userorders.js" />
         <option value="$PROJECT_DIR$/src/orders/Orderstore.js" />
+        <option value="$PROJECT_DIR$/src/booktable/view/Booktable.js" />
+        <option value="$PROJECT_DIR$/src/shoppingcart/view/Cartbody.js" />
+        <option value="$PROJECT_DIR$/src/shoppingcart/Cartstore.js" />
+        <option value="$PROJECT_DIR$/src/userzone/view/Userzone.js" />
+        <option value="$PROJECT_DIR$/src/userzone/view/Userorders.js" />
       </list>
     </option>
   </component>
@@ -203,9 +193,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="207" />
-    <option name="y" value="38" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="56" />
+    <option name="y" value="30" />
     <option name="width" value="1790" />
     <option name="height" value="934" />
   </component>
@@ -234,25 +224,7 @@
             <path>
               <item name="bookstore_front" type="b2602c69:ProjectViewProjectNode" />
               <item name="bookstore_front" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bookstore_front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bookstore_front" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bookstore_front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bookstore_front" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="orders" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bookstore_front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bookstore_front" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="orders" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bookstore_front" type="b2602c69:ProjectViewProjectNode" />
@@ -376,12 +348,12 @@
       <workItem from="1523024167302" duration="599000" />
       <workItem from="1523078602495" duration="1971000" />
       <workItem from="1523281128185" duration="601000" />
-      <workItem from="1523352035156" duration="5256000" />
+      <workItem from="1523352035156" duration="9401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193056000" />
+    <option name="totallyTimeSpent" value="197201000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -393,7 +365,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="207" y="38" width="1790" height="934" extended-state="0" />
+    <frame x="56" y="30" width="1790" height="934" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15125571" sideWeight="0.49577168" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957393" sideWeight="0.49543378" order="6" side_tool="false" content_ui="tabs" />
@@ -402,7 +375,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957393" sideWeight="0.4977169" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3770287" sideWeight="0.42922375" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3770287" sideWeight="0.42922375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13802083" sideWeight="0.50422835" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -693,13 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/booktable/view/Booktable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="34" column="59" lean-forward="false" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -734,42 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/constVariable/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartsubmit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shoppingcart/Cartstore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="100" column="50" lean-forward="false" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartbody.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/orders/view/Cartbody.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -783,7 +713,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -804,20 +734,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userzone/view/Userzone.js">
+    <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartsubmit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="24" />
+        <state relative-caret-position="300">
+          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/booktable/view/Booktable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userzone/view/Userorders.js">
+    <entry file="file://$PROJECT_DIR$/src/shoppingcart/view/Cartbody.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="92" column="49" lean-forward="true" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constVariable/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shoppingcart/Cartstore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="180" column="47" lean-forward="false" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -832,9 +788,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/orders/Orderstore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+        <state relative-caret-position="225">
+          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userzone/view/Userorders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="30" column="58" lean-forward="false" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userzone/view/Userzone.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

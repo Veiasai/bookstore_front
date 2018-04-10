@@ -48,6 +48,7 @@ class Booktable extends Component {
             }];
 
         return <Table columns={columns} dataSource={this.bookStore.data.toJS()}
+                      rowKey={"bookID"}
                       pagination={this.bookStore.pagination}
                       loading={this.bookStore.loading}/>;
     }

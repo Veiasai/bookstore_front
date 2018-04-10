@@ -90,8 +90,6 @@ class Cartbody extends Component {
                 ),
             }];
 
-
-
         return <Table rowSelection={rowSelection}
                       columns={columns}
                       dataSource={this.cartStore.data.toJS()}
