@@ -13,6 +13,8 @@ import {view as Booktable} from './booktable'
 import {view as Cart} from './shoppingcart'
 import {view as Userzone} from './userzone'
 import {view as Bookupload} from './bookupload'
+import {view as Orderpage} from './orders'
+
 import Display from './BookDisplay'
 
 const {Footer} = Layout;
@@ -34,6 +36,7 @@ class App extends Component {
                             <Route path="/manager" component={ManagerPage}/>
                             <Route path="/uploadbook" component={Bookupload}/>
                             <Route path="/book/:id/:name?" component={Bookpage}/>
+                            <Route path="/order/:id" component={Orderpage}/>
                             <Route miss component={Default}/>
                         </Col>
                     </Row>
