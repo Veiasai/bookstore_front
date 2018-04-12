@@ -73,7 +73,7 @@ class Bookone extends Component {
             bookPrice: 10,
             bookImg: "https://raw.githubusercontent.com/Veiasai/pictures/master/%E6%9A%97%E9%BB%91%E9%A6%86.jpg",
             bookClass: "loading",
-            bookDescription: "loading",
+            bookDescription: "图书不存在或网络异常",
             bookWriter: "loading",
             bookDate: "loading",
             bookStock: 10,
@@ -94,7 +94,7 @@ class Bookone extends Component {
                             <Card
                                 hoverable
                                 style={{width: 400}}
-                                cover={<img alt="error"
+                                cover={<img alt="error" style={{height:550}}
                                             src={this.state.bookImg}/>}
                             >
                                 <Card.Meta

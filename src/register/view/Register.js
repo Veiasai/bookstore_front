@@ -15,7 +15,7 @@ class Register extends React.Component {
             </Row>
             <Divider />
             <Row type="flex" justify="space-around">
-                <Col span={6}>
+                <Col >
                     <Registerform />
                 </Col>
             </Row>

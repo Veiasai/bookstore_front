@@ -1,6 +1,7 @@
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 import React, {Component} from 'react';
 import Booktable from './Booktable'
+import Booksearch from './Booksearch'
 import {observer, inject} from 'mobx-react'
 
 const {Content, Footer, Sider} = Layout;
@@ -8,10 +9,11 @@ const {Content, Footer, Sider} = Layout;
 @inject(['rootStore'])
 @observer
 class Main extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.classStore = this.props.rootStore.classStore;
     }
+
     render() {
 
         return (
@@ -24,9 +26,8 @@ class Main extends Component {
 
                     <Layout style={{padding: '24px 0', background: '#fff'}}>
                         <Sider width={200} style={{background: '#fff'}}>
-
                             <Menu title={<span>Navigation One</span>} mode='inline' style={{height: '100%'}}>
-                                <Menu.SubMenu key="sub" title={<span><Icon type="setting" /><span>图书分类</span></span>}>
+                                <Menu.SubMenu key="sub" title={<span><Icon type="setting"/><span>图书分类</span></span>}>
                                     {
                                         this.classStore.catalogue.map((Item, i) => {
                                             return (<Menu.Item key={i}>{Item}</Menu.Item>)
@@ -37,6 +38,7 @@ class Main extends Component {
                         </Sider>
 
                         <Content style={{padding: '0 24px', minHeight: 280}}>
+                            <Booksearch/>
                             <Booktable/>
                         </Content>
                     </Layout>

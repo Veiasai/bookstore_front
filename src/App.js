@@ -35,7 +35,7 @@ class App extends Component {
                             <Route path="/cart" component={Cart}/>
                             <Route path="/manager" component={ManagerPage}/>
                             <Route path="/uploadbook" component={Bookupload}/>
-                            <Route path="/book/:id/:name?" component={Bookpage}/>
+                            <Route path="/book/:id" component={Bookpage}/>
                             <Route path="/order/:id" component={Orderpage}/>
                             <Route miss component={Default}/>
                         </Col>

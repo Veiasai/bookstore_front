@@ -26,7 +26,7 @@ class Home extends Component {
                             <Menu.Item key="2"><Link to='/like'>店长推荐</Link></Menu.Item>
                             <Menu.Item key="3"><Link to='/new'>新书上架</Link></Menu.Item>
                             <Menu.Item key="4"><Link to='/uploadbook'>上传书籍</Link></Menu.Item>
-                            <Menu.Item key="5">加盟我们</Menu.Item>
+                            <Menu.Item key="5"><Link to='/collaborator'>加盟我们</Link></Menu.Item>
                         </Menu>
                     </Col>
                 </Row>
