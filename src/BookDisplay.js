@@ -2,10 +2,9 @@ import React,{Component} from 'react';
 import { Carousel} from 'antd';
 
 const test = [
-    'https://raw.githubusercontent.com/Veiasai/pictures/master/%E7%A2%A7%E7%91%B6.jpeg',
-    'https://raw.githubusercontent.com/Veiasai/pictures/master/mxd.jpg',
-    'https://raw.githubusercontent.com/Veiasai/pictures/master/%E5%80%92%E5%BD%B1.jpg',
-    'https://raw.githubusercontent.com/Veiasai/pictures/master/%E4%BA%91%E9%92%9F.jpg',
+    'biyao.jpeg',
+    'mxd.jpg',
+    'yunzhong.jpg',
 ];
 
 class BookDisplay extends Component {

@@ -1,3 +1,3 @@
 import view from './view/Userzone.js'
-
-export { view};
+import store from './UserInfoStore'
+export {store, view};

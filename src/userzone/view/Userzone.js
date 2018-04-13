@@ -1,38 +1,21 @@
 import React, {Component} from 'react';
-import {Icon, Upload, Modal, Card, Tabs, Tooltip} from 'antd';
+import {Tabs} from 'antd';
 import {inject, observer} from 'mobx-react';
-import UploadIcon from "./UploadIcon";
 import Userorders from './Userorders'
+import UserInfo from './UserInfo'
 
 const TabPane = Tabs.TabPane;
-const {Meta} = Card;
 
 @inject(['rootStore'])
 @observer
 class Userzone extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <Tabs defaultActiveKey="1">
-                <TabPane tab="Avator" key="1">
-                    <Card
-                        hoverable
-                        style={{width: 240}}
-                        cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>}
-                    >
-                        <Meta
-                            title="个人头像"
-                            description="i am veia"
-                        />
-                    </Card>
+                <TabPane tab="My Info" key="1">
+                    <UserInfo/>
                 </TabPane>
-
-                <TabPane tab="My Favorite Books" key="2">
-                    <UploadIcon/>
-                </TabPane>
-                <TabPane tab="My Orders" key="3">
+                <TabPane tab="My Orders" key="2">
                     <Userorders/>
                 </TabPane>
             </Tabs>

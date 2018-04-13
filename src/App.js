@@ -14,7 +14,6 @@ import {view as Cart} from './shoppingcart'
 import {view as Userzone} from './userzone'
 import {view as Bookupload} from './bookupload'
 import {view as Orderpage} from './orders'
-
 import Display from './BookDisplay'
 
 const {Footer} = Layout;

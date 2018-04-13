@@ -10,7 +10,7 @@ class Login extends Component {
                 <Divider />
             <Row type="flex" justify="space-around" align="middle">
                 <Col span={6}>
-                    <img src="https://raw.githubusercontent.com/Veiasai/pictures/master/login.jpg" alt="图片加载失败"/>
+                    <img src="login.jpg" alt="图片加载失败"/>
                 </Col>
             </Row>
                 <Divider />

@@ -10,28 +10,14 @@ class Userstore {
 
     @observable
     user = {
-        username:"Veia",
+        username:"",
         email:[],
         password:[],
         remember:false,
-        hasLogin:true,
+        hasLogin:false,
         level:0,
     };
 
-    @observable
-    userInfo ={
-        userIcon:[{
-            uid: -1,
-            name: 'xxx.png',
-            status: 'done',
-            url: 'https://raw.githubusercontent.com/Veiasai/pictures/master/%E7%A2%A7%E7%91%B6.jpeg',
-        }]
-    };
-
-    @action.bound
-    setUserIcon(userIcon) {
-        this.userInfo.userIcon = userIcon;
-    }
 
     @action.bound
     record(value) {
@@ -53,7 +39,6 @@ class Userstore {
                     body: "{}",
                 });
             const json = await response.json();
-            console.log(json);
             this.user.hasLogin = false;
             Control.go('/', {name: 'React-Keeper'});
         }

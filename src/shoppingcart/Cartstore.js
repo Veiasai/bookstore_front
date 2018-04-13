@@ -76,6 +76,7 @@ class Cartstore {
     };
     @action.bound
     cartGet = async () => {
+        this.loading = true;
         const url = prefix + ip + getCartAction;
         try {
             const response = await fetch(url,
@@ -89,7 +90,6 @@ class Cartstore {
                     body: "{}",
                 });
             const json = await response.json();
-            console.log(json);
             if (json.code === 403) {
                 message.info('登录失效');
                 this.rootStore.userStore.user.hasLogin = false;
@@ -107,6 +107,9 @@ class Cartstore {
         }
         catch (err) {
             message.info('网络异常,购物车加载失败');
+        }
+        finally {
+            this.loading = false;
         }
     };
 
