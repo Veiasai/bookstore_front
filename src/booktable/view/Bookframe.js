@@ -11,8 +11,17 @@ const {Content, Footer, Sider} = Layout;
 class Main extends Component {
     constructor(props) {
         super(props);
-        this.classStore = this.props.rootStore.classStore;
+        this.bookStore = this.props.rootStore.bookStore;
     }
+
+    selectClass = ()=>{
+        let conditions = {
+            priceRange: this.bookStore.priceRange,
+            dateRange:this.bookStore.dateRange,
+            bookClass: this.bookStore.bookClass
+        };
+        this.bookStore.searchbook(conditions);
+    };
 
     render() {
 
@@ -26,10 +35,22 @@ class Main extends Component {
 
                     <Layout style={{padding: '24px 0', background: '#fff'}}>
                         <Sider width={200} style={{background: '#fff'}}>
-                            <Menu title={<span>Navigation One</span>} mode='inline' style={{height: '100%'}}>
+                            <Menu title={<span>Navigation One</span>} mode='inline'
+                                  style={{height: '100%'}}
+                                    onClick={({ item, key, keyPath }) => {
+                                        if (key === '0')
+                                        {
+                                            this.bookStore.bookClass = null;
+                                        }
+                                        else {
+                                            this.bookStore.bookClass = key;
+                                        }
+                                        this.selectClass();
+                                    }}
+                            >
                                 <Menu.SubMenu key="sub" title={<span><Icon type="setting"/><span>图书分类</span></span>}>
                                     {
-                                        this.classStore.catalogue.map((Item, i) => {
+                                        this.bookStore.classCatalogue.map((Item, i) => {
                                             return (<Menu.Item key={i}>{Item}</Menu.Item>)
                                         })
                                     }

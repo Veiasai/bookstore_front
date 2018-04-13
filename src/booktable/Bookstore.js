@@ -1,5 +1,4 @@
 import {observable, action} from 'mobx';
-import {Control} from "react-keeper";
 import {ip, prefix, searchBookAction} from "../constVariable";
 import {message} from "antd/lib/index";
 
@@ -12,6 +11,23 @@ class Bookstore {
     loading = false;
     @observable
     pagination = 50;
+    @observable
+    priceRange = [1, 999];
+    @observable
+    dateRange = null;
+    @observable
+    bookClass = null;
+    @observable
+    classCatalogue = [
+        '全部',
+        '文学',
+        '哲学',
+        '军事',
+        '经济',
+        '生物科学',
+        '工业技术'
+    ];
+    notinit = true;
 
     @action.bound
     searchbook = async (conditions) => {
@@ -55,8 +71,9 @@ class Bookstore {
 
     @action.bound
     init() {
-        if (this.data.length === 0) {
+        if (this.notinit) {
             this.searchbook({});
+            this.notinit = false;
         }
     }
 

@@ -18,7 +18,7 @@ const config = {
 class BookInput extends React.Component {
     constructor(props, context) {
         super(...arguments);
-        this.classStore = this.props.rootStore.classStore;
+        this.bookStore = this.props.rootStore.bookStore;
         this.state = {
             loading: false,
         };
@@ -179,7 +179,7 @@ class BookInput extends React.Component {
                         }],
                     })(
                         <RadioGroup>
-                            {this.classStore.catalogue.map((item,i) => {
+                            {this.bookStore.classCatalogue.map((item,i) => {
                                 return <RadioButton value={i}>{item}</RadioButton>
                             })}
                         </RadioGroup>

@@ -12,8 +12,6 @@ const {Meta} = Card;
 class Userzone extends Component {
     constructor(props) {
         super(props);
-        this.orderStore = this.props.rootStore.orderStore;
-        this.orderStore.orderGet();
     }
     render() {
         return (

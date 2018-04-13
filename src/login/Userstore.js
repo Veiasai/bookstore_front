@@ -55,7 +55,7 @@ class Userstore {
             const json = await response.json();
             console.log(json);
             this.user.hasLogin = false;
-            Control.go('/', {name: 'React-Keeper'})
+            Control.go('/', {name: 'React-Keeper'});
         }
         catch (err) {
             message.info('网络异常');

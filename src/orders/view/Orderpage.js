@@ -12,10 +12,10 @@ class Orderpage extends Component {
             order:{},
             loading: true
         };
-        this.orderGet(this.props.params.id);
+        this.orderGetOne(this.props.params.id);
     }
 
-    orderGet = async (id) => {
+    orderGetOne = async (id) => {
         const url = prefix + ip + getOrderAction;
         try {
             const response = await fetch(url + "/" + id,
@@ -38,6 +38,7 @@ class Orderpage extends Component {
         }
         catch (err) {
             message.info('网络异常,订单加载失败');
+            this.setState({loading:false});
         }
     };
 
