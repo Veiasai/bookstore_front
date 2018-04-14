@@ -43,11 +43,9 @@ class Loginform extends Component {
 
             const json = await response.json();
             if (json.code === 200) {
-                user.hasLogin = true;
-                user.username = json.user.username;
-                this.props.rootStore.userStore.record(user);
+                json.user.hasLogin = true;
+                this.props.rootStore.userStore.record(json.user);
                 message.info('登录成功');
-                this.setState({loading: false});
                 Control.go('/', {name: 'React-Keeper'})
             }
             else {

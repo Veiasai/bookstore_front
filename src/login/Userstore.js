@@ -11,9 +11,8 @@ class Userstore {
     @observable
     user = {
         username:"",
-        email:[],
-        password:[],
-        remember:false,
+        email:"",
+        password:"",
         hasLogin:false,
         level:0,
     };

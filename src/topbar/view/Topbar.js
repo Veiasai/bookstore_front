@@ -7,7 +7,6 @@ import {inject, observer} from 'mobx-react'
 @observer
 class Topbar extends Component {
     render() {
-
         const userStore = this.props.rootStore.userStore;
         const user = userStore.user;
         if (user.hasLogin === true)

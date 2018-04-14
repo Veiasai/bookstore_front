@@ -1,36 +1,27 @@
 import React from 'react'
-import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message, DatePicker, Radio } from 'antd';
+import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message, DatePicker, Radio} from 'antd';
 import {inject} from 'mobx-react'
 import {prefix, ip, postBookAction} from "../../constVariable";
 
 const MonthPicker = DatePicker.MonthPicker;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
-const { TextArea } = Input;
+const {TextArea} = Input;
 
 const IntegerReg = /^[0-9]+$/;
 
 const config = {
-    rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+    rules: [{type: 'object', required: true, message: 'Please select time!'}],
 };
 
 @inject(['rootStore'])
 class BookInput extends React.Component {
-    constructor(props, context) {
-        super(...arguments);
-        this.bookStore = this.props.rootStore.bookStore;
-        this.state = {
-            loading: false,
-        };
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 let img = this.props.rootStore.bookStore.uploadBookImg;
-                if (img)
-                {
+                if (img) {
                     this.submit(values, img);
                 }
                 else
@@ -39,7 +30,6 @@ class BookInput extends React.Component {
             console.log(values.bookClass);
         });
     };
-
     validatorInteger = (rule, value, callback) => {
         if (value && IntegerReg.test(value)) {
             callback();
@@ -47,22 +37,21 @@ class BookInput extends React.Component {
             callback('The input must be Integer');
         }
     };
-
     submit = async (values, img) => {
         const url = prefix + ip + postBookAction;
         this.setState({loading: true});
         try {
             let singleBook = {
                 bookName: {},
-                bookWriter:{},
-                bookClass:{},
-                bookDate:{},
+                bookWriter: {},
+                bookClass: {},
+                bookDate: {},
                 bookPrice: {},
             };
             singleBook = {...values};
             let bookImgAndDescrption = {
-                bookImg:img,
-                bookDescription:values.bookDescription,
+                bookImg: img,
+                bookDescription: values.bookDescription,
             };
 
             let obj = {
@@ -91,6 +80,15 @@ class BookInput extends React.Component {
         this.setState({loading: false});
     };
 
+    constructor(props, context) {
+        super(...arguments);
+        this.bookStore = this.props.rootStore.bookStore;
+        this.userStore = this.props.rootStore.userStore;
+        this.state = {
+            loading: false,
+        };
+    }
+
     render() {
         const FormItem = Form.Item;
         const {getFieldDecorator} = this.props.form;
@@ -98,11 +96,11 @@ class BookInput extends React.Component {
         const formItemLayout = {
             labelCol: {
                 xs: {span: 24},
-                sm: {span: 8},
+                sm: {span: 12},
             },
             wrapperCol: {
                 xs: {span: 24},
-                sm: {span: 16},
+                sm: {span: 12},
             },
         };
         const tailFormItemLayout = {
@@ -120,6 +118,7 @@ class BookInput extends React.Component {
 
         return (
             <Form onSubmit={this.handleSubmit}>
+                {}
                 <FormItem
                     {...formItemLayout}
                     label="BookName"
@@ -140,7 +139,7 @@ class BookInput extends React.Component {
                     {getFieldDecorator('bookPrice', {
                         rules: [{
                             validator: this.validatorInteger,
-                        },{
+                        }, {
                             required: true, message: 'Please input price!',
                         }],
                     })(
@@ -153,7 +152,7 @@ class BookInput extends React.Component {
                 >
                     {getFieldDecorator('bookDate', config)
                     (
-                        <MonthPicker />
+                        <MonthPicker/>
                     )}
                 </FormItem>
                 <FormItem
@@ -179,8 +178,9 @@ class BookInput extends React.Component {
                         }],
                     })(
                         <RadioGroup>
-                            {this.bookStore.classCatalogue.map((item,i) => {
-                                return <RadioButton value={i}>{item}</RadioButton>
+                            {this.bookStore.classCatalogue.map((item, i) => {
+                                if (i !== 0)
+                                    return <RadioButton value={i} key={i}>{item}</RadioButton>
                             })}
                         </RadioGroup>
                     )}
@@ -195,7 +195,7 @@ class BookInput extends React.Component {
                             required: true, message: 'Please input description!',
                         }],
                     })(
-                        <TextArea rows={4} />
+                        <TextArea rows={4}/>
                     )}
                 </FormItem>
 

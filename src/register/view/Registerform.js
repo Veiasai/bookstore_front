@@ -55,6 +55,9 @@ class RegistrationForm extends React.Component {
                 message.info('注册成功');
                 Control.go('/', { name: 'React-Keeper' })
             }
+            else if (json.code === 400){
+                message.info('重复邮箱');
+            }
         }
         catch (err) {
             message.info('网络异常');

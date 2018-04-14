@@ -44,6 +44,10 @@ class Booktable extends Component {
                 title: 'Price',
                 dataIndex: 'bookPrice',
                 key: 'price',
+            }, {
+                title: 'Stock',
+                dataIndex: 'bookStock',
+                key: 'stock',
             }];
 
         return <Table columns={columns} dataSource={this.bookStore.data.toJS()}

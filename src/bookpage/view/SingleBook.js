@@ -36,7 +36,7 @@ class Bookone extends Component {
 
     addBooktoCart = () => {
         let book = {
-            bookSelect:false,
+            bookSelect: false,
             bookID: {},
             bookName: {},
             bookPrice: {},
@@ -48,8 +48,7 @@ class Bookone extends Component {
         };
 
         book = {...this.state};
-        if (this.props.rootStore.userStore.user.hasLogin)
-        {
+        if (this.props.rootStore.userStore.user.hasLogin) {
             if (this.props.rootStore.cartStore.addBook(book) === 1) {
                 message.info('购物车中已经有这本书');
             }
@@ -57,16 +56,20 @@ class Bookone extends Component {
                 message.info('添加至购物车成功');
             }
         }
-        else
-        {
+        else {
             message.info('您还没有登录哦');
         }
+
+    };
+
+    updatebook = ()=>{
 
     };
 
     constructor(props,) {
         super(props);
         this.bookStore = this.props.rootStore.bookStore;
+        this.userStore = this.props.rootStore.userStore;
         this.state = {
             bookID: this.props.params.id,
             bookName: this.props.params.name,
@@ -89,12 +92,12 @@ class Bookone extends Component {
         return (
             <Spin spinning={this.state.loading}>
                 <Row type="flex" justify="center" align="top">
-                    <Col>
+                    <Col span={8}>
                         <Row>
                             <Card
                                 hoverable
-                                style={{width: 400}}
-                                cover={<img alt="error" style={{height:550}}
+                                style={{width: "100%"}}
+                                cover={<img alt="error" style={{height: 550}}
                                             src={this.state.bookImg}/>}
                             >
                                 <Card.Meta
@@ -111,9 +114,15 @@ class Bookone extends Component {
                         <Row>
                             <Button style={{width: 400}} onClick={this.addBooktoCart}>加入购物车</Button>
                         </Row>
+                        <Row>
+                            {(this.userStore.user.hasLogin && this.userStore.user.level) ?
+                                <Button style={{width: 400}} onClick={this.updatebook}>更新此书</Button>
+                                : null}
+                        </Row>
                     </Col>
-                    <Col>
-                        <Card title="简介" bordered={false} style={{width: 400, height: 400}}>{this.state.bookDescription}</Card>
+                    <Col span={8}>
+                        <Card title="简介" bordered={false}
+                              style={{width: 400, height: 400}}>{this.state.bookDescription}</Card>
                     </Col>
                 </Row>
             </Spin>

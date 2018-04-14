@@ -15,3 +15,6 @@ export const uploadbookimg = '/postbookimg';
 export const postOrderAction = '/postorder';
 export const getOrderAction = '/getorder';
 export const searchOrderAction = '/searchorders';
+export const getUserAction = '/manager/getuser';
+export const postUserAction = '/manager/postuser';
+export const deleteUserAction = '/manager/deleteuser';
