@@ -103,6 +103,7 @@ class BookInput extends React.Component {
                 sm: {span: 12},
             },
         };
+
         const tailFormItemLayout = {
             wrapperCol: {
                 xs: {
@@ -111,14 +112,13 @@ class BookInput extends React.Component {
                 },
                 sm: {
                     span: 16,
-                    offset: 8,
+                    offset: 12,
                 },
             },
         };
 
         return (
             <Form onSubmit={this.handleSubmit}>
-                {}
                 <FormItem
                     {...formItemLayout}
                     label="BookName"
