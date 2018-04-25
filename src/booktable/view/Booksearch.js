@@ -15,7 +15,8 @@ class Booksearch extends Component {
             searchText:value,
             priceRange: this.bookStore.priceRange,
             dateRange:this.bookStore.dateRange,
-            bookClass: this.bookStore.bookClass
+            bookClass: this.bookStore.bookClass,
+            bookValid: !!this.props.manager,
         };
         this.bookStore.searchbook(conditions);
     };

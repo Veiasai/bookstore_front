@@ -59,8 +59,8 @@ class Main extends Component {
                         </Sider>
 
                         <Content style={{padding: '0 24px', minHeight: 280}}>
-                            <Booksearch/>
-                            <Booktable/>
+                            <Booksearch manager={this.props.manager}/>
+                            <Booktable manager={this.props.manager}/>
                         </Content>
                     </Layout>
                 </Content>

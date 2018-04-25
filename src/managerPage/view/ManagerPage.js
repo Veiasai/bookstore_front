@@ -3,6 +3,9 @@ import {Row, Col, Tabs, Icon} from 'antd';
 import ManageSale from './ManageSale'
 import ManageSaleSearch from './ManageSaleSearch'
 import ManageUser from './ManageUser'
+import {view as BookFrame} from '../../booktable'
+import {view as Bookupload} from '../../bookupload'
+
 import {inject, observer} from "mobx-react/index";
 
 const TabPane = Tabs.TabPane;
@@ -30,6 +33,9 @@ class Default extends Component {
                             <br/>
                             <h3>销售总量：{this.managerStore.getTotalCount}</h3>
                             <h3>物品总价：{this.managerStore.getTotalPrice}</h3>
+                        </TabPane>
+                        <TabPane tab={<span><Icon type="android" />管理书籍</span>} key="3">
+                            <BookFrame manager={true}/>
                         </TabPane>
                     </Tabs>
                 </Col>

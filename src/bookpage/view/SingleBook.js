@@ -114,11 +114,6 @@ class Bookone extends Component {
                         <Row>
                             <Button style={{width: 400}} onClick={this.addBooktoCart}>加入购物车</Button>
                         </Row>
-                        <Row>
-                            {(this.userStore.user.hasLogin && this.userStore.user.level) ?
-                                <Button style={{width: 400}} onClick={this.updatebook}>更新此书</Button>
-                                : null}
-                        </Row>
                     </Col>
                     <Col span={8}>
                         <Card title="简介" bordered={false}

@@ -13,6 +13,15 @@ class Managerstore {
     @observable
     userloading = false;
 
+    bookCacheData = [];
+    @observable
+    bookData = [];
+    @observable
+    bookloading = false;
+
+    @observable
+    bookForm = null;
+
     @observable
     saleRecord = [];
     @observable

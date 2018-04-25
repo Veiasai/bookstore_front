@@ -19,3 +19,4 @@ export const getUserAction = '/manager/getuser';
 export const postUserAction = '/manager/postuser';
 export const deleteUserAction = '/manager/deleteuser';
 export const getSaleRecordAction = '/manager/getsalerecord';
+

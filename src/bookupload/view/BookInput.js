@@ -37,6 +37,7 @@ class BookInput extends React.Component {
             callback('The input must be Integer');
         }
     };
+
     submit = async (values, img) => {
         const url = prefix + ip + postBookAction;
         this.setState({loading: true});
@@ -84,6 +85,12 @@ class BookInput extends React.Component {
         super(...arguments);
         this.bookStore = this.props.rootStore.bookStore;
         this.userStore = this.props.rootStore.userStore;
+        this.managerStore = this.props.rootStore.managerStore;
+        if (this.props.manager)
+        {
+            this.managerStore.bookForm = this.props.form;
+        }
+        console.log(this.props.manager);
         this.state = {
             loading: false,
         };
