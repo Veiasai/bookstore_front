@@ -25,9 +25,9 @@ class Cartbody extends Component {
     constructor(props) {
         super(props);
         this.cartStore = this.props.rootStore.cartStore;
+        this.bookStore = this.props.rootStore.bookStore;
         if (this.cartStore.data.length === 0)
             this.cartStore.cartGet();
-
     }
 
     render() {
@@ -57,6 +57,9 @@ class Cartbody extends Component {
                 title: 'Class',
                 dataIndex: 'bookClass',
                 key: 'class',
+                render: (text, record) => {
+                    return this.bookStore.classCatalogue[text];
+                }
             }, {
                 title: 'Date',
                 dataIndex: 'bookDate',

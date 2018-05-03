@@ -1,6 +1,9 @@
 import {observable, action, computed} from 'mobx';
 import {
-    deleteUserAction, getBookAction, getSaleRecordAction, getUserAction, ip, logoutAction, postUserAction,
+    deleteBookActionM,
+    deleteUserActionM, getBookAction, getSaleRecordActionM, getUserActionM, ip, logoutAction, postBookAction,
+    postBookActionM,
+    postUserActionM,
     prefix, searchBookAction
 } from "../constVariable";
 import {Control} from "react-keeper";
@@ -12,15 +15,6 @@ class Managerstore {
     userData = [];
     @observable
     userloading = false;
-
-    bookCacheData = [];
-    @observable
-    bookData = [];
-    @observable
-    bookloading = false;
-
-    @observable
-    bookForm = null;
 
     @observable
     saleRecord = [];
@@ -57,7 +51,7 @@ class Managerstore {
 
     @action.bound
     getUser = async () => {
-        const url = prefix + ip + getUserAction;
+        const url = prefix + ip + getUserActionM;
         try {
             const response = await fetch(url,
                 {
@@ -82,7 +76,7 @@ class Managerstore {
 
     @action.bound
     postUser = async (user) => {
-        const url = prefix + ip + postUserAction;
+        const url = prefix + ip + postUserActionM;
         try {
             const response = await fetch(url,
                 {
@@ -116,7 +110,7 @@ class Managerstore {
 
     @action.bound
     deleteUser = async (user) => {
-        const url = prefix + ip + deleteUserAction;
+        const url = prefix + ip + deleteUserActionM;
         try {
             const response = await fetch(url,
                 {
@@ -151,7 +145,7 @@ class Managerstore {
     @action.bound
     getSaleRecord = async (values) => {
         this.saleRecordLoading = true;
-        const url = prefix + ip + getSaleRecordAction;
+        const url = prefix + ip + getSaleRecordActionM;
         try {
             const response = await fetch(url,
                 {
@@ -183,10 +177,48 @@ class Managerstore {
             this.saleRecordLoading = false;
         }
     };
-
     constructor(rootStore) {
         this.rootStore = rootStore
     }
+
+    @action.bound
+    postBook = async (book, del) => {
+        let urlaction = postBookActionM;
+        if (del)
+        {
+            urlaction = deleteBookActionM;
+        }
+        const url = prefix + ip + urlaction;
+        try {
+            const response = await fetch(url,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: "include",
+                    mode: 'cors',
+                    body: JSON.stringify(book)
+                });
+            const json = await response.json();
+            if (json.code === 200) {
+                message.info("修改成功");
+                this.rootStore.bookStore.cacheData = this.rootStore.bookStore.data.toJS().map(item => ({...item}));
+            }
+            else if (json.code === 403) {
+                message.info("没有登录或没有管理员权限");
+                Control.go('/', {name: 'React-Keeper'});
+            }
+            else if (json.code === 400) {
+                this.rootStore.bookStore.data = this.rootStore.bookStore.cacheData.map(item => ({...item}));
+                message.info(json.message);
+            }
+        }
+        catch (err) {
+            console.log(err);
+            message.info('网络异常');
+        }
+    };
 }
 
 export default Managerstore;

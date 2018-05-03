@@ -50,6 +50,7 @@ class ManageSale extends Component {
         }];
         return (<Table
             columns={columns}
+            rowkey={"id"}
             dataSource={this.managerStore.saleRecord.toJS()}
             loading={this.managerStore.saleRecordLoading}
         />)

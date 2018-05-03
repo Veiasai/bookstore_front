@@ -25,11 +25,13 @@ class ManageUser extends Component {
             this.managerStore.postUser(target);
         }
     };
+
     constructor(props) {
         super(props);
         this.managerStore = this.props.rootStore.managerStore;
         this.managerStore.getUser();
     }
+
     renderColumns(text, record, column) {
         return (
             <EditableCell
@@ -65,7 +67,7 @@ class ManageUser extends Component {
         if (target) {
             delete target.editable;
             this.managerStore.userData = newData;
-            this.managerStore.postUser(target, newData);
+            this.managerStore.postUser(target);
         }
     }
 

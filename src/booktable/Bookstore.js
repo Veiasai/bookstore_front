@@ -1,8 +1,9 @@
 import {observable, action} from 'mobx';
-import {ip, prefix, searchBookAction} from "../constVariable";
+import {deleteBookActionM, ip, postBookActionM, prefix, searchBookAction, searchBookActionM} from "../constVariable";
 import {message} from "antd/lib/index";
 
 class Bookstore {
+    cacheData = [];
     @observable
     data = [];
     @observable
@@ -30,8 +31,13 @@ class Bookstore {
     notinit = true;
 
     @action.bound
-    searchbook = async (conditions) => {
-        const url = prefix + ip + searchBookAction;
+    searchbook = async (conditions, manager) => {
+        let urlaction = searchBookAction;
+        if (manager)
+        {
+            urlaction = searchBookActionM;
+        }
+        const url = prefix + ip + urlaction;
         this.loading = true;
         try {
             const response = await fetch(url,
