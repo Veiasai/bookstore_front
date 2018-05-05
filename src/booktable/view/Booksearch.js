@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {Table, Input, DatePicker, InputNumber, Icon, Row, Col} from 'antd';
+import {Col, DatePicker, Icon, Input, InputNumber, Row} from 'antd';
 import {observer} from 'mobx-react';
 import {inject} from "mobx-react/index";
-import moment from 'moment';
 
 const {RangePicker} = DatePicker;
 const Search = Input.Search;

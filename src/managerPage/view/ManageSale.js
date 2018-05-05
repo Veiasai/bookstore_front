@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Input, Button, Table} from 'antd';
+import {Table} from 'antd';
 import {inject, observer} from "mobx-react/index";
 
 @inject(['rootStore'])

@@ -1,6 +1,6 @@
 import {inject, observer} from 'mobx-react';
 import React, {Component} from 'react';
-import {Table, InputNumber, Input, Button, Radio, Popconfirm} from 'antd';
+import {Input, Popconfirm, Radio, Table} from 'antd';
 
 const RadioGroup = Radio.Group;
 

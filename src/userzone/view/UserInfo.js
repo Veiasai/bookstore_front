@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {Icon, Upload, Modal, Row, Col, Button, Spin} from 'antd';
-import {Card, message} from "antd/lib/index";
+import {Button, Col, Icon, Row, Spin, Upload} from 'antd';
+import {message} from "antd/lib/index";
 import {inject, observer} from 'mobx-react';
 import {ip, prefix, uploadbookimg} from "../../constVariable";
-
-const {Meta} = Card;
 
 function getBase64(img, callback) {
     const reader = new FileReader();

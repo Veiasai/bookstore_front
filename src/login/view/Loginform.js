@@ -15,60 +15,18 @@ class Loginform extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.login(values);
+                this.userStore.login(values);
             }
         });
-    };
-    login = async (values) => {
-        const url = prefix + ip + loginAction;
-        if (values !== null)
-            this.setState({loading: true});
-        let user = {
-            email: {},
-            password: {}
-        };
-        user = {...values};
-
-        try {
-            const response = await fetch(url,
-                {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include",
-                    mode: 'cors',
-                    body: JSON.stringify(user),
-                });
-
-            const json = await response.json();
-            if (json.code === 200) {
-                json.user.hasLogin = true;
-                this.props.rootStore.userStore.record(json.user);
-                message.info('登录成功');
-                Control.go('/', {name: 'React-Keeper'})
-            }
-            else {
-                if (values !== null)
-                    message.info(json.message);
-            }
-        }
-        catch (err) {
-            if (values !== null)
-                message.info('网络异常');
-        }
-        this.setState({loading: false});
     };
 
     constructor(props) {
         super(props);
-        this.state = {
-            loading: false,
-        };
+        this.userStore = this.props.rootStore.userStore;
     }
 
     componentWillMount() {
-        this.login(null);
+        this.userStore.login(null);
     }
 
     render() {
@@ -101,7 +59,7 @@ class Loginform extends Component {
                     )}
                     <Link className="login-form-forgot" to="/forgotpw">Forgot password</Link>
                     <br/>
-                    <Spin spinning={this.state.loading}>
+                    <Spin spinning={this.userStore.loading}>
                         <Button style={{width: '100%'}} type="primary" htmlType="submit" className="login-form-button">
                             Log in
                         </Button>

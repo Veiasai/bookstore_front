@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Table, Input, DatePicker, Row, Col, Spin} from 'antd';
+import {Col, DatePicker, Input, Row, Spin, Table} from 'antd';
 import {inject, observer} from 'mobx-react';
 import {Link} from 'react-keeper'
 

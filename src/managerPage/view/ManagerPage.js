@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Row, Col, Tabs, Icon} from 'antd';
+import {Col, Icon, Row, Tabs} from 'antd';
 import ManageSale from './ManageSale'
 import ManageSaleSearch from './ManageSaleSearch'
 import ManageUser from './ManageUser'
 import {view as BookFrame} from '../../booktable'
-import {view as Bookupload} from '../../bookupload'
 
 import {inject, observer} from "mobx-react/index";
 

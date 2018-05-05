@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Row, Col, Button, Spin, Slider} from 'antd';
+import {Col, Row} from 'antd';
 import {inject} from 'mobx-react';
 import BookInput from './BookInput'
 import BookImgUpload from './BookImgUpload'

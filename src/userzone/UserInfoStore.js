@@ -1,5 +1,5 @@
-import {observable, action} from 'mobx';
-import {getUserInfoAction, ip, logoutAction, postCartAction, postUserInfoAction, prefix} from "../constVariable";
+import {action, observable} from 'mobx';
+import {getUserInfoAction, ip, postUserInfoAction, prefix} from "../constVariable";
 import {Control} from "react-keeper";
 import {message} from "antd/lib/index";
 

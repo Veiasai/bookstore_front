@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Row, Col, Input, Button, Icon, DatePicker, Radio} from 'antd';
+import {Button, Col, DatePicker, Form, Input, Radio, Row} from 'antd';
 import {inject, observer} from "mobx-react/index";
 
 const FormItem = Form.Item;
@@ -40,18 +40,12 @@ class ManageSaleSearch extends Component {
                 <Row gutter={24}>
                     <Col span={6}>
                         <FormItem label={`bookID:`}>
-                            {getFieldDecorator('bookID')
-                            (
-                                <Input/>
-                            )}
+                            {getFieldDecorator('bookID')(<Input/>)}
                         </FormItem>
                     </Col>
                     <Col span={6}>
                         <FormItem label={`bookWriter:`}>
-                            {getFieldDecorator('bookWriter')
-                            (
-                                <Input/>
-                            )}
+                            {getFieldDecorator('bookWriter')(<Input/>)}
                         </FormItem>
                     </Col>
                     <Col span={6}>
@@ -65,10 +59,7 @@ class ManageSaleSearch extends Component {
                     </Col>
                     <Col span={6}>
                         <FormItem label={`userID:`}>
-                            {getFieldDecorator('userID')
-                            (
-                                <Input/>
-                            )}
+                            {getFieldDecorator('userID')(<Input/>)}
                         </FormItem>
                     </Col>
                 </Row>
@@ -81,6 +72,8 @@ class ManageSaleSearch extends Component {
                                 {this.bookStore.classCatalogue.map((item, i) => {
                                     if (i !== 0)
                                         return <RadioButton value={i} key={i}>{item}</RadioButton>
+                                    else
+                                        return null;
                                 })}
                             </RadioGroup>
                         )}

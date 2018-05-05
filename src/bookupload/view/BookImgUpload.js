@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Upload, Icon, message } from 'antd';
+import {Icon, message, Upload} from 'antd';
 import {inject} from "mobx-react/index";
-import {prefix, ip, uploadbookimg} from '../../constVariable'
+import {ip, prefix, uploadbookimg} from '../../constVariable'
 
 function getBase64(img, callback) {
     const reader = new FileReader();
@@ -47,7 +47,7 @@ class BookImgUpload extends Component {
             </div>
         );
         const imageUrl = this.state.imageUrl;
-        {this.props.rootStore.bookStore.uploadBookImg = imageUrl}
+        this.props.rootStore.bookStore.uploadBookImg = imageUrl;
         return (
             <Upload
                 name="avatar"

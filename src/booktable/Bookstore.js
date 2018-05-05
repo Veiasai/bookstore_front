@@ -1,5 +1,5 @@
-import {observable, action} from 'mobx';
-import {deleteBookActionM, ip, postBookActionM, prefix, searchBookAction, searchBookActionM} from "../constVariable";
+import {action, observable} from 'mobx';
+import {ip, prefix, searchBookAction, searchBookActionM} from "../constVariable";
 import {message} from "antd/lib/index";
 
 class Bookstore {
@@ -64,15 +64,6 @@ class Bookstore {
 
     constructor(rootStore) {
         this.rootStore = rootStore;
-    }
-
-    @action.bound
-    getbookbyid(bookid) {
-        let i = 0, len = this.data.length;
-        for (i, len; i < len; i++) {
-            if (this.data[i].bookID = bookid)
-                return this.data[i];
-        }
     }
 
     @action.bound

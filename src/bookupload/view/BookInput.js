@@ -1,7 +1,7 @@
 import React from 'react'
-import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message, DatePicker, Radio} from 'antd';
+import {Button, DatePicker, Form, Input, message, Radio, Spin} from 'antd';
 import {inject} from 'mobx-react'
-import {prefix, ip, postBookAction} from "../../constVariable";
+import {ip, postBookAction, prefix} from "../../constVariable";
 
 const MonthPicker = DatePicker.MonthPicker;
 const RadioButton = Radio.Button;
@@ -157,10 +157,7 @@ class BookInput extends React.Component {
                     {...formItemLayout}
                     label="BookDate"
                 >
-                    {getFieldDecorator('bookDate', config)
-                    (
-                        <MonthPicker/>
-                    )}
+                    {getFieldDecorator('bookDate', config)(<MonthPicker/>)}
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
@@ -187,7 +184,9 @@ class BookInput extends React.Component {
                         <RadioGroup>
                             {this.bookStore.classCatalogue.map((item, i) => {
                                 if (i !== 0)
-                                    return <RadioButton value={i} key={i}>{item}</RadioButton>
+                                    return (<RadioButton value={i} key={i}>{item}</RadioButton>);
+                                else
+                                    return null;
                             })}
                         </RadioGroup>
                     )}

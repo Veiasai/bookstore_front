@@ -51,9 +51,8 @@ class RegistrationForm extends React.Component {
             if (json.code === 200)
             {
                 user.hasLogin = true;
-                this.props.rootStore.userStore.record(user);
                 message.info('注册成功');
-                Control.go('/', { name: 'React-Keeper' })
+                this.props.rootStore.userStore.login(user);
             }
             else if (json.code === 400){
                 message.info(json.message);
