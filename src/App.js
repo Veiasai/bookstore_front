@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-keeper'
+import {BrowserRouter as Router, Route, Control} from 'react-keeper'
 import {Row, Col, Layout, BackTop} from 'antd';
 import './App.css';
 import {view as Home} from './home'
@@ -20,6 +20,7 @@ const {Footer} = Layout;
 
 class App extends Component {
     render() {
+        console.log(Control);
         return (
             <Router>
                 <div>
