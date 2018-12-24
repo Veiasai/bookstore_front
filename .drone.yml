@@ -13,4 +13,3 @@ pipeline:
     tags: ["latest", "v1"]
     secrets: [ docker_username, docker_password ]
     dockerfile: Dockerfile
-    
