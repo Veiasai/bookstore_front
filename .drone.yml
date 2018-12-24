@@ -3,7 +3,7 @@ workspace:
   path: src/github.com/veiasai/front
 pipeline:
   build:
-    image: chekote/node:latest
+    image: node:latest
     commands:
       - npm install
       - npm run-script build
