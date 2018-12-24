@@ -1,13 +1,14 @@
-workspace:
-  base: /front
-  path: src/github.com/veiasai/front
-pipeline:
-  build:
+kind: pipeline
+name: default
+
+steps:
+  - name: build
     image: kkarczmarczyk/node-yarn:latest
     commands:
       - yarn install
       - yarn build
-  publish:
+
+  - name: publish
     image: plugins/docker
     repo: veiasai/bookstore-front
     tags: ["latest", "v1"]
