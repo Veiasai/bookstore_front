@@ -5,8 +5,8 @@ pipeline:
   build:
     image: chekote/node:latest
     commands:
-      - yarn install
-      - yarn build
+      - npm install
+      - npm build
   publish:
     image: plugins/docker
     repo: veiasai/bookstore-front
