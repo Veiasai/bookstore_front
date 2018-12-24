@@ -1,6 +1,6 @@
 export const prefix='http:';
 //export const ip = '//localhost:8080';
-export const ip = '//129.211.116.215:8080';
+export const ip = '//master/bookstore';
 export const registerAction = '/register';
 export const loginAction = '/login';
 export const logoutAction = '/logout';

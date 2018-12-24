@@ -2,8 +2,6 @@ import React from 'react'
 import {Form, Input, Tooltip, Icon, Checkbox, Button, Spin, message} from 'antd';
 import {inject} from 'mobx-react'
 import {prefix, ip, registerAction} from "../../constVariable";
-import {Control} from 'react-keeper'
-
 
 const mobile = /^1\d{10}$/;
 const password = /^(?!([a-zA-Z]+|\d+)$)[a-zA-Z\d]{6,18}$/;

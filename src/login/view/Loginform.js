@@ -1,11 +1,8 @@
 import React, {Component} from 'react'
 import {Form, Icon, Input, Button, Checkbox, Spin} from 'antd';
-import {Control, Link} from 'react-keeper'
+import {Link} from 'react-keeper'
 import {inject} from 'mobx-react'
 import './login.css'
-import {message} from "antd/lib/index";
-import {ip, prefix, loginAction} from "../../constVariable";
-
 
 const FormItem = Form.Item;
 
