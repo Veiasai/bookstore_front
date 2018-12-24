@@ -3,7 +3,7 @@ workspace:
   path: src/github.com/veiasai/front
 pipeline:
   build:
-    image: kkarczmarczyk/node-yarn:latest
+    image: jonbaldie/yarn:latest
     commands:
       - yarn install
       - yarn build
