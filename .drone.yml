@@ -6,7 +6,7 @@ pipeline:
     image: chekote/node:latest
     commands:
       - npm install
-      - npm build
+      - npm run-script build
   publish:
     image: plugins/docker
     repo: veiasai/bookstore-front
