@@ -14,3 +14,9 @@ steps:
     tags: ["latest", "v1"]
     secrets: [ docker_username, docker_password ]
     dockerfile: Dockerfile
+
+trigger:
+  branch:
+  - drone
+  event:
+  - push
