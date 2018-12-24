@@ -1,0 +1,15 @@
+workspace:
+  base: /front
+  path: src/github.com/veiasai/front
+pipeline:
+  build:
+    image: kkarczmarczyk/node-yarn:latest
+    commands:
+      - yarn install
+      - yarn build
+  publish:
+    image: plugins/docker
+    repo: veiasai/bookstore-front
+    tags: ["latest", "v1"]
+    secrets: [ docker_username, docker_password ]
+    dockerfile: Dockerfile
