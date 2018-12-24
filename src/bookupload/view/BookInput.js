@@ -77,6 +77,7 @@ class BookInput extends React.Component {
         }
         catch (err) {
             message.info('网络异常');
+            console.log(err);
         }
         this.setState({loading: false});
     };
